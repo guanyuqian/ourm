@@ -1,87 +1,57 @@
-$(document).ready(function() {
-		var ok1 = false;
-		var ok2 = false;
-		var ok3 = false;
-		var ok4 = false;
-		var ok5 = false;
-
+$(document).ready(function() {	
 		// 验证用户名
 		$("#register").click(function() {
-			var name = $("#omName").val();
-			if (name == null || name == "")
-				;
-			else {
-				ok1 = true;
-			}
-
-		
-
-		//验证账单
-		
-			var rag = /[0-9]+/;
-			var w = $("#bank").val();
-			if (w == "" || rag.test(w)) {
-				ok2 = true;
-			}
-	
-
-		//验证密码
-		
-			
-			var reg = /[a-zA-Z0-9_]/;
-			var v = $("#password1").val();
-			if (v.length >= 6 && v.length <= 20 && reg.test(v)) {
-				ok3 = true;
-			}
-		
-	
-		//验证确认密码
-		
-			if(ok1==true && ok2==true && ok3==true){
-			var pass1 = $("#password1").val();
-			var pass2 = $("#password2").val();
-			if (pass1 == pass2) {
-				ok4 = true;
-			}	}
-	
-
-		//集体人数
-		
-			var rbg = /[0-9]+/;
-			var e = $("#num").val();
-			if (rbg.test(e)) {
-				ok5 = true;
-			}
-	
-
-		
-			if (ok1 == false) {
+			if ($("#omName").val() == ""){
 				alert("名字不能为空");
 				return false;
-			} else {
-				if (ok2 == false) {
-					alert("账单只能含有数字");
-					return false;
-				} else {
-					if (ok3 == false) {
-						alert("密码要能大于6位小于20位且只能含有字母、数字、下划线");
-						return false;
-					} else {
-						if (ok4 == false) {
-							alert("请再次确认密码");
-							return false;
-						} else {
-							if (ok5 == false) {
-								alert("请输入集体人数");
-								return false;
-							} else {
-								$("formcheck").submit();
-
-							}
-						}
-					}
-				}
+			}	
+		//验证账单		
+			var rag = /[0-9]+/;
+			var w = $("#bank").val();
+			if ((w == "" || rag.test(w))==false) {
+				alert("账戶只能含有数字");
+				return false;
 			}
+		//验证密码		
+			rag = /[a-zA-Z0-9_]/;
+			var v = $("#password1").val();
+			if (v.length < 6 || v.length > 20 || (rag.test(v))==false) {
+				alert("密码要能大于6位小于20位且只能含有字母、数字、下划线");
+				return false;
+			}
+		//验证确认密码
+			if (($("#password2").val() ==  $("#password1").val())==false) {
+				alert("请再次确认密码");
+				return false;
+			}	
+		//集体人数	
+			rag = /[0-9]+/;
+			var num=$("#num").val(),num1=$("#num1").val(),num2=$("#num2").val(),num3=$("#num3").val();
+
+			if ((parseInt(num)==num)==false)  {
+				alert("请正确填写集体人数");
+				return false;
+			} 
+			if ((parseInt(num1)==num1)==false)  {
+				alert("请正确填写超级管理员人数");
+				return false;
+			} 
+			if ((parseInt(num2)==num2)==false&&(num2=="")==false)  {
+				alert("请正确填写财务管理员人数");
+				return false;
+			}else if(num2==""){
+				num2="0";
+			}
+			if ((parseInt(num3)==num3)==false&&(num3=="")==false)  {
+				alert("请正确填写管理员人数");
+				return false;
+			}else if(rag.test(num3)==""){
+				num3="0";
+			}
+		
+			$("formcheck").submit();
+		
+			
 		});
 
 	});

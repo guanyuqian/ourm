@@ -185,7 +185,7 @@ footer {
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6">
-											<label>集体规模：</label>
+											<label>集体人数：</label>
 											<s:textfield name="om.headcount" placeholder="如：50" id="num"
 												cssClass="form-control"></s:textfield>
 										</div>
@@ -202,11 +202,11 @@ footer {
 										<div class="col-sm-6">
 											<label>账户管理员人数：</label>
 											<s:textfield name="financeManagerCount"
-												cssClass="form-control"></s:textfield>
+												cssClass="form-control" id="num2"></s:textfield>
 										</div>
 										<div class="col-sm-6">
 											<label>普通管理员人数：</label>
-											<s:textfield name="managerCount" cssClass="form-control "></s:textfield>
+											<s:textfield name="managerCount" cssClass="form-control" id="num3"></s:textfield>
 										</div>
 									</div>
 								</div>
