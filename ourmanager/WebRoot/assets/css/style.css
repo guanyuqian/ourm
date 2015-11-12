@@ -4443,12 +4443,19 @@ margin: 0;
 /* Login Box & Register Box
 =================================================================== */
 /* login screens - wrappers */
-.body-login,
-.body-register {
+.body-login {
 display: table;
 height: 100vh;
 margin: -20px auto 0 auto;
 max-width: 500px;
+padding: 0 15px;
+width: 100%;
+}
+.body-register {
+display: table;
+height: 100vh;
+margin: -20px auto 0 auto;
+max-width:650px;
 padding: 0 15px;
 width: 100%;
 }
