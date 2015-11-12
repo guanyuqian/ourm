@@ -90,13 +90,11 @@
 
 <script>
 	$(document).ready(function() {
-
 		var id_count = <s:property value="om.omid" />;
 		var superManager_count = <s:property value="superManagerCount" />;
 		var financeManage_count = <s:property value="financeManagerCount" />;
 		var manager_count = <s:property value="managerCount" />;
 		var member_count = <s:property value="om.headcount" />;
-
 		var first = id_count * 1000+1;
 		var second = first + superManager_count-1;
 		var first1 = second + 1;
