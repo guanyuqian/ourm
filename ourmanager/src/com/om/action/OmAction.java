@@ -77,6 +77,10 @@ public class OmAction  extends ActionSupport {
 	}
 	public String buildOM() throws Exception {
 		Om newom=new Om(om);
+		if(newom.getOmProvince().equals("请选择省"))newom.setOmProvince("");
+		if(newom.getOmCity().equals("请选择市"))newom.setOmCity("");
+		if(newom.getOmCounty().equals("请选择区县"))newom.setOmCounty("");
+
 		if (omService.add(newom,uniPassword,superManagerCount,financeManagerCount,managerCount)){
 			om=newom;
 			return SUCCESS;

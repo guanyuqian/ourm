@@ -28,7 +28,7 @@
 		<action name="buildOM" class="OmBuildAction" method="buildOM">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success">/feedback.jsp</result>
-			<result name="error">/register.jsp</result>
+			<result name="error">/my_register.jsp</result>
 		</action>
 
 		<action name="Update" class="UserInfoUpdateAction" method="Update">

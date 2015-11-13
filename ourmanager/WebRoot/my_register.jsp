@@ -135,7 +135,7 @@ footer {
 										</div>
 										<div class="col-sm-6">
 											<label>确认密码：</label>
-											<s:password name="uniPassword" id="password2"
+											<s:password name="Password" id="password2"
 												cssClass="form-control "></s:password>
 										</div>
 									</div>
@@ -149,18 +149,18 @@ footer {
 									<div class="col-md-3">
 										<select class="select form-control" name="om.omProvince"
 											id="s1">
-											<option>请选择省</option>
+											<option value="">请选择省</option>
 										</select>
 									</div>
 									<div class="col-md-3">
 										<select class="select form-control" name="om.omCity" id="s2">
-											<option>请选择市</option>
+											<option value="">请选择市</option>
 										</select>
 									</div>
 									<div class="col-md-3">
-										<select class="z form-control" name="om.Town" id="s3"
+										<select class="z form-control" name="om.omCounty" id="s3"
 											onchange="getTown()">
-											<option>请选择区县</option>
+											<option value="">请选择区县</option>
 										</select>
 									</div>
 
@@ -185,7 +185,7 @@ footer {
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6">
-											<label>集体规模：</label>
+											<label>集体人数：</label>
 											<s:textfield name="om.headcount" placeholder="如：50" id="num"
 												cssClass="form-control"></s:textfield>
 										</div>
@@ -202,11 +202,11 @@ footer {
 										<div class="col-sm-6">
 											<label>账户管理员人数：</label>
 											<s:textfield name="financeManagerCount"
-												cssClass="form-control"></s:textfield>
+												cssClass="form-control" id="num2"></s:textfield>
 										</div>
 										<div class="col-sm-6">
 											<label>普通管理员人数：</label>
-											<s:textfield name="managerCount" cssClass="form-control "></s:textfield>
+											<s:textfield name="managerCount" cssClass="form-control" id="num3"></s:textfield>
 										</div>
 									</div>
 								</div>
