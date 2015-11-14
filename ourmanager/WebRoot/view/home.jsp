@@ -77,10 +77,10 @@
 					$(" .nav-children").hide(300);//动画隐藏
 					$(".nav-parent").removeClass("nav-expanded");//全部隐藏
 				} else {
-					$(".nav-parent").removeClass("nav-expanded");//全部隐藏
+					$(" .nav-children").hide(300);//动画隐藏
 					$(e.data.clickID + " .nav-children").show(300);//动画展开
+					$(".nav-parent").removeClass("nav-expanded");//全部隐藏
 					$(e.data.clickID).toggleClass("nav-expanded");//当前展开
-
 				}
 			});
 		}
