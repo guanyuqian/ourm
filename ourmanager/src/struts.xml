@@ -18,9 +18,8 @@
 		<default-interceptor-ref name="defaultInterceptorss"></default-interceptor-ref>
 		<global-results>
 			<result name="login_fail">/login.jsp</result>
-			<result name="data_ini">/profile.jsp</result>
+			<result name="data_ini">view/profile.jsp</result>
 		</global-results>
-
 		<action name="LoginAction" class="LoginAction" method="loginuser">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success">view/index.jsp</result>
@@ -32,14 +31,19 @@
 		</action>
 
 		<action name="Update" class="UserInfoUpdateAction" method="Update">
-		<result name="success">/login.jsp</result>
+			<result name="success">view/profile.jsp</result>
 		</action>
 		<action name="test" class="OmServiceAction" method="test">
 			<result name="success" type="json"></result>
 
 		</action>
 		<action name="updateOM" class="OmUpdateAction" method="updateOM">
-		<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="jsonAjax" class="com.zxt.JsonAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- 将返回类型设置为json -->
+			<result type="json"></result>
 		</action>
 	</package>
 </struts>    
