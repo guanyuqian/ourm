@@ -77,6 +77,12 @@
         <property name="userHomeCity" type="java.lang.String">
             <column name="user_home_city" length="20" />
         </property>
+        <set name="billsForCheckerUserid" inverse="true">
+            <key>
+                <column name="checker_userid" not-null="true" />
+            </key>
+            <one-to-many class="com.om.model.Bill" />
+        </set>
         <set name="purchases" inverse="true">
             <key>
                 <column name="userid" not-null="true" />
@@ -88,6 +94,12 @@
                 <column name="userid" not-null="true" />
             </key>
             <one-to-many class="com.om.model.Log" />
+        </set>
+        <set name="billsForCreaterUserid" inverse="true">
+            <key>
+                <column name="creater_userid" not-null="true" />
+            </key>
+            <one-to-many class="com.om.model.Bill" />
         </set>
     </class>
 </hibernate-mapping>

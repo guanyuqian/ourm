@@ -34,6 +34,7 @@ public class BillDAO {
 	public static final String BILL_STATUS = "billStatus";
 	public static final String BILL_OBJECT = "billObject";
 	public static final String DELETEFLAG = "deleteflag";
+	public static final String BILL_DES = "billDes";
 
 	private SessionFactory sessionFactory;
 
@@ -135,6 +136,10 @@ public class BillDAO {
 
 	public List findByDeleteflag(Object deleteflag) {
 		return findByProperty(DELETEFLAG, deleteflag);
+	}
+
+	public List findByBillDes(Object billDes) {
+		return findByProperty(BILL_DES, billDes);
 	}
 
 	public List findAll() {

@@ -37,8 +37,10 @@ public class User implements java.io.Serializable {
 	private String userHomeProvince;
 	private String userHomeCounty;
 	private String userHomeCity;
+	private Set billsForCheckerUserid = new HashSet(0);
 	private Set purchases = new HashSet(0);
 	private Set logs = new HashSet(0);
+	private Set billsForCreaterUserid = new HashSet(0);
 
 	// Constructors
 
@@ -65,7 +67,8 @@ public class User implements java.io.Serializable {
 			Short userAge, Boolean deleteflag, Timestamp userCreatetime,
 			String userProvince, String userCounty, String userCity,
 			String userHomeProvince, String userHomeCounty,
-			String userHomeCity, Set purchases, Set logs) {
+			String userHomeCity, Set billsForCheckerUserid, Set purchases,
+			Set logs, Set billsForCreaterUserid) {
 		this.om = om;
 		this.userName = userName;
 		this.userPassword = userPassword;
@@ -88,8 +91,10 @@ public class User implements java.io.Serializable {
 		this.userHomeProvince = userHomeProvince;
 		this.userHomeCounty = userHomeCounty;
 		this.userHomeCity = userHomeCity;
+		this.billsForCheckerUserid = billsForCheckerUserid;
 		this.purchases = purchases;
 		this.logs = logs;
+		this.billsForCreaterUserid = billsForCreaterUserid;
 	}
 
 	// Property accessors
@@ -278,6 +283,14 @@ public class User implements java.io.Serializable {
 		this.userHomeCity = userHomeCity;
 	}
 
+	public Set getBillsForCheckerUserid() {
+		return this.billsForCheckerUserid;
+	}
+
+	public void setBillsForCheckerUserid(Set billsForCheckerUserid) {
+		this.billsForCheckerUserid = billsForCheckerUserid;
+	}
+
 	public Set getPurchases() {
 		return this.purchases;
 	}
@@ -296,6 +309,14 @@ public class User implements java.io.Serializable {
 
 	public void setUserLimit(Limit l) {
 		this.userLimit=l.ordinal();
+	}
+
+	public Set getBillsForCreaterUserid() {
+		return this.billsForCreaterUserid;
+	}
+
+	public void setBillsForCreaterUserid(Set billsForCreaterUserid) {
+		this.billsForCreaterUserid = billsForCreaterUserid;
 	}
 
 }

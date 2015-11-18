@@ -13,6 +13,8 @@ public class Bill implements java.io.Serializable {
 	// Fields
 
 	private Integer billid;
+	private User userByCreaterUserid;
+	private User userByCheckerUserid;
 	private Om om;
 	private String billName;
 	private Float billMoney;
@@ -21,6 +23,7 @@ public class Bill implements java.io.Serializable {
 	private Integer billStatus;
 	private String billObject;
 	private Boolean deleteflag;
+	private String billDes;
 	private Set purchases = new HashSet(0);
 
 	// Constructors
@@ -30,8 +33,11 @@ public class Bill implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Bill(Om om, String billName, Float billMoney, Integer billType,
+	public Bill(User userByCreaterUserid, User userByCheckerUserid, Om om,
+			String billName, Float billMoney, Integer billType,
 			Timestamp billCreatetime, Integer billStatus, Boolean deleteflag) {
+		this.userByCreaterUserid = userByCreaterUserid;
+		this.userByCheckerUserid = userByCheckerUserid;
 		this.om = om;
 		this.billName = billName;
 		this.billMoney = billMoney;
@@ -42,9 +48,12 @@ public class Bill implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Bill(Om om, String billName, Float billMoney, Integer billType,
+	public Bill(User userByCreaterUserid, User userByCheckerUserid, Om om,
+			String billName, Float billMoney, Integer billType,
 			Timestamp billCreatetime, Integer billStatus, String billObject,
-			Boolean deleteflag, Set purchases) {
+			Boolean deleteflag, String billDes, Set purchases) {
+		this.userByCreaterUserid = userByCreaterUserid;
+		this.userByCheckerUserid = userByCheckerUserid;
 		this.om = om;
 		this.billName = billName;
 		this.billMoney = billMoney;
@@ -53,6 +62,7 @@ public class Bill implements java.io.Serializable {
 		this.billStatus = billStatus;
 		this.billObject = billObject;
 		this.deleteflag = deleteflag;
+		this.billDes = billDes;
 		this.purchases = purchases;
 	}
 
@@ -64,6 +74,22 @@ public class Bill implements java.io.Serializable {
 
 	public void setBillid(Integer billid) {
 		this.billid = billid;
+	}
+
+	public User getUserByCreaterUserid() {
+		return this.userByCreaterUserid;
+	}
+
+	public void setUserByCreaterUserid(User userByCreaterUserid) {
+		this.userByCreaterUserid = userByCreaterUserid;
+	}
+
+	public User getUserByCheckerUserid() {
+		return this.userByCheckerUserid;
+	}
+
+	public void setUserByCheckerUserid(User userByCheckerUserid) {
+		this.userByCheckerUserid = userByCheckerUserid;
 	}
 
 	public Om getOm() {
@@ -128,6 +154,14 @@ public class Bill implements java.io.Serializable {
 
 	public void setDeleteflag(Boolean deleteflag) {
 		this.deleteflag = deleteflag;
+	}
+
+	public String getBillDes() {
+		return this.billDes;
+	}
+
+	public void setBillDes(String billDes) {
+		this.billDes = billDes;
 	}
 
 	public Set getPurchases() {
