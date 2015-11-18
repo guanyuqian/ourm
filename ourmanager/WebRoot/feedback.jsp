@@ -108,12 +108,12 @@
 		var l_Manager = first1 + '～' + second1;
 		var m_Manager = first2 + '～' + second2;
 		var s_Manager = first3 + '～' + second3;
-         
+			
 		if(first==second){
 			$("#xl").html(first);
 		}
 		else{
-			$("#xl").html(x_Manager);
+			$("#xl").html(x_Manager);                //超管
 		}
 		if(financeManage_count==0){
 			$("#ll").html("");
@@ -123,7 +123,7 @@
 			$("#ll").html(first1);
 		}
 			else{
-				$("#ll").html(l_Manager);
+				$("#ll").html(l_Manager);              //财政
 				}
 		
 		if(manager_count==0){
@@ -134,19 +134,27 @@
 			$("#mm").html(first2);
 		}
 			else{
-				$("#mm").html(m_Manager);
+				$("#mm").html(m_Manager);               //普管
 				}
 		
-		
-		$("#ss").html(s_Manager);
+		if(first3==second3){
+			$("#mm").html(first3);
+		}
+		if(first3>second3){
+			$("#mm").html("");
+		}
+		else{
+			$("#ss").html(s_Manager);               //成员
+		}
+		                  
 
 	});
 </script>
 
 </head>
 <body>
-	<div class=col-lg-3></div>
-	<div class="col-lg-5">
+	
+	<div class="feedback wrap1">
 		<div class="panel-heading bk-bg-primary">
 			<h4>
 				<div class="col-lg-4"></div>
@@ -191,17 +199,17 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6"></div>
+				<div class="col-lg-11"></div>
 				<center>
-					<button href="login.jsp" class="btn btn-primary hidden-xs">点此跳转到登录页面</button>
+					<button onclick="window.location='login.jsp'" class="btn btn-primary hidden-xs text-center">点此跳转到登录页面</button>
 				</center>
-				<center>
-					<button href="login.jsp"
+				
+					<button   onclick="window.location='login.jsp'"
 						class="btn btn-primary btn-block btn-lg visible-xs bk-margin-top-10">点此跳转到登录页面</button>
-				</center>
+				
 				<div>
-					<div class="text-with-hr">
-						<span>--</span>
+					<div class="text-with-hr" >
+						<span>一</span>
 					</div>
 				</div>
 
