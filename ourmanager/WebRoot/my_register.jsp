@@ -74,6 +74,9 @@ footer {
 
 <!-- Head Libs -->
 <script src="assets/plugins/modernizr/js/modernizr.js"></script>
+<script src="assets/js/jquery-1.7.1.js"></script>
+<script src="assets/js/register-jquery.js"></script>
+<script src="assets/js/jsAddress.js" type="text/javascript"></script>
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -82,10 +85,14 @@ footer {
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+<script type="text/javascript">
+$(document).ready(function(){
+	addressInit('1cmbProvince', '1cmbCity', '1cmbArea', '新疆',
+			'${user.userCity}', '${user.userCounty}');
 
+	});
+</script>
 </head>
-<script src="assets/js/jquery-1.7.1.js"></script>
-<script src="assets/js/register-jquery.js"></script>
 
 
 <body onload="setup();">
@@ -114,7 +121,7 @@ footer {
 									<div class="row ">
 										<div id="tip" class="col-sm-6">
 
-											<label>集体名：</label>
+											<label>集体名：</label><span class="required">*</span>
 											<s:textfield name="om.omName" id="omName"
 												cssClass=" form-control"></s:textfield>
 										</div>
@@ -129,12 +136,12 @@ footer {
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6">
-											<label>密码：</label>
+											<label>密码：</label><span class="required">*</span>
 											<s:password name="uniPassword" id="password1"
 												cssClass="form-control"></s:password>
 										</div>
 										<div class="col-sm-6">
-											<label>确认密码：</label>
+											<label>确认密码：</label><span class="required">*</span>
 											<s:password name="Password" id="password2"
 												cssClass="form-control "></s:password>
 										</div>
@@ -148,19 +155,19 @@ footer {
 									</div>
 									<div class="col-md-3">
 										<select class="select form-control" name="om.omProvince"
-											id="s1">
-											<option value="">请选择省</option>
+											id="1cmbProvince">
+										
 										</select>
 									</div>
 									<div class="col-md-3">
-										<select class="select form-control" name="om.omCity" id="s2">
-											<option value="">请选择市</option>
+										<select class="select form-control" name="om.omCity" id="1cmbCity">
+											
 										</select>
 									</div>
 									<div class="col-md-3">
-										<select class="z form-control" name="om.omCounty" id="s3"
-											onchange="getTown()">
-											<option value="">请选择区县</option>
+										<select class="z form-control" name="om.omCounty" id="1cmbArea"
+											>
+											
 										</select>
 									</div>
 
@@ -185,12 +192,12 @@ footer {
 								<div class="form-group">
 									<div class="row">
 										<div class="col-sm-6">
-											<label>集体人数：</label>
+											<label>集体人数：</label><span class="required">*</span>
 											<s:textfield name="om.headcount" placeholder="如：50" id="num"
-												cssClass="form-control"></s:textfield>
+												cssClass="form-control"></s:textfield>					
 										</div>
 										<div class="col-sm-6">
-											<label>超级管理员人数：</label>
+											<label>超级管理员人数：</label><span class="required">*</span>
 											<s:textfield name="superManagerCount" id="num1" value="1"
 												cssClass="form-control "></s:textfield>
 										</div>

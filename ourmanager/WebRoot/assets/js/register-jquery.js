@@ -58,7 +58,7 @@ $(document).ready(function() {
 
 
 
-//这个函数是必须的，因为在area.js里每次更改地址时会调用此函数  
+/*//这个函数是必须的，因为在area.js里每次更改地址时会调用此函数  
 function promptinfo() {
 	var address = document.getElementById('address');
 	var s1 = document.getElementById('s1');
@@ -90,3 +90,4 @@ function getTown() {
 
 }
 
+*/

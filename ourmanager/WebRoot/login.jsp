@@ -94,43 +94,25 @@ footer {
 
 <script type="text/javascript">
 $(document).ready(function() {
-		var ok1 = false;
-		var ok2 = 0;
-	
-
 		// 验证用户名
-		$("#login").click(function() {
-			var name = $("#username").val();
-			if (name == null || name == "")
-				;
-			else {
-				ok1 = true;
-			}
-
-		});
-
-	
-
-		//验证密码
-		$("#login").click(function() {
-			var v = $("#userpassword1").val();
-			var reg = /[a-zA-Z0-9_]/;
-			if (v.length<1) {
-				ok2 = 0;
-			}		
-			else if(v.length >= 6 && v.length <= 20 && reg.test(v)) {
-				ok3 =1;
-			}
-		});
-	
-		$("#login").click(function() {
-			if (ok1 == false) {
-				alert("账号不能为空");
+			
+       $("#login").click(function() {
+    	   var login_num=$("#username").val();
+			if ((parseInt(login_num)==login_num)==false||(login_num.length==10)==false){
+				alert("账号为长10位的数字");
 				return false;
-			} 
-		});
+			}	
+			
+			
+			rag = /[a-zA-Z0-9_]/;
+			var v = $("#userpassword1").val();
+			if (v.length < 6 || v.length > 20 || (rag.test(v))==false) {
+				alert("密码要能大于6位小于20位且只能含有字母、数字、下划线");
+				return false;
+			}
 
-
+			
+       });
 	});
 </script>
 
@@ -155,11 +137,8 @@ $(document).ready(function() {
 						<div class="panel-body">
 							<s:form action="LoginAction" id="formcheck" method="post">
 								<div class="form-group">
-									<label>用户名</label>
-
-
+									<label>用户账号</label>
 									<div class="input-group input-group-icon">
-
 										<s:textfield id="username" name="user.userid"
 											cssClass="form-control bk-noradius"></s:textfield>
 										<span class="input-group-addon"> <span class="icon">
@@ -181,7 +160,9 @@ $(document).ready(function() {
 									</div>
 								</div>
 								<br />
+								<div class="feedback_colour">
 								<s:property value="#session.LoginMessage" />
+								</div>
 								<div class="row">
 									<div class="col-sm-8">
 										<div
@@ -242,22 +223,3 @@ $(document).ready(function() {
 </body>
 
 </html>
-<!--  
-<body>
-	<div
-		style="clear: both;float:right;padding-top: 100px;padding-right: 200px;">
-		<center>
-			<s:property value="#request.msg" />
-			<br> <br> 顾客登录
-			<s:property value="#session['LoginMessage']" />
-			<s:property value="user.userid" />
-			<s:form action="LoginAction" method="post">
-				<s:textfield name="user.userid"></s:textfield>
-				<s:password name="user.userPassword"></s:password>
-				<s:submit></s:submit>
-			</s:form>
-		</center>
-	</div>
-</body>
-</html>
--->
