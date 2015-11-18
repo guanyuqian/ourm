@@ -10,6 +10,12 @@
             <column name="billid" />
             <generator class="identity" />
         </id>
+        <many-to-one name="userByCreaterUserid" class="com.om.model.User" fetch="select">
+            <column name="creater_userid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByCheckerUserid" class="com.om.model.User" fetch="select">
+            <column name="checker_userid" not-null="true" />
+        </many-to-one>
         <many-to-one name="om" class="com.om.model.Om" fetch="select">
             <column name="omid" not-null="true" />
         </many-to-one>
@@ -25,7 +31,9 @@
             </column>
         </property>
         <property name="billCreatetime" type="java.sql.Timestamp">
-            <column name="bill_createtime" length="19" not-null="true" />
+            <column name="bill_createtime" length="19" not-null="true">
+                <comment>账单创建时间</comment>
+            </column>
         </property>
         <property name="billStatus" type="java.lang.Integer">
             <column name="bill_status" not-null="true">
@@ -39,6 +47,11 @@
         </property>
         <property name="deleteflag" type="java.lang.Boolean">
             <column name="deleteflag" not-null="true" />
+        </property>
+        <property name="billDes" type="java.lang.String">
+            <column name="bill_des" length="200">
+                <comment>说明</comment>
+            </column>
         </property>
         <set name="purchases" inverse="true">
             <key>

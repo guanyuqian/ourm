@@ -84,12 +84,16 @@ footer {
 <script src="assets/js/jquery-1.7.1.js"></script>
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.inputmask.js" type="text/javascript"></script>
+<script src="assets/js/jsAddress.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-	var s = <s:property value="#session.user.userSex" />;
-	alert(s);
-		$("#userSex").val(s);
-		
+	addressInit('cmbP', 'cmbC', 'cmbA',
+						'${user.userProvince}', '${user.userCity}',
+						'${user.userCounty}');
+
+	addressInit('cmbP1', 'cmbC1', 'cmbA1',
+						'${user.userHomeProvince}', '${user.userHomeCity}',
+						'${user.userHomeCounty}');
 	
 		$("#save").click(function() {
 			if ($("#userName").val() == "") {
@@ -99,12 +103,8 @@ footer {
 			if ($("#userSex").val() == "") {
 				alert("请选择性别！");
 				return false;
-			}
-			var uh=$("#seachprov option:selected").text()+$("#seachcity option:selected").text()+$("#seachdistrict option:selected").text();
-			$("#UH").val(uh);
-			var uh1=$("#seachprov1 option:selected").text()+$("#seachcity1 option:selected").text()+$("#seachdistrict1 option:selected").text();
-			$("#UH1").val(uh1);
-			
+				}
+	
 		});
 	});
 </script>
@@ -124,7 +124,7 @@ footer {
 
 
 
-		<div class="row">
+		<div class="row" id="1">
 			<div class="main " style="min-height: 767px;">
 				<div class="page-header">
 					<div class="pull-right">
@@ -132,12 +132,12 @@ footer {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6">
-						<div class="panel"
-							style="width: 870px; padding-left: 100px; border-left-width: 0px; margin-left: 130px; padding-top: 50px;">
+					<div class="col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<div class="panel">
 
-							<div class="panel-body"
-								style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
+							<div class="panel-body">
 								<form class="form-horizontal " enctype="multipart/form-data"
 									method="post" action="">
 									<div class="form-group">
@@ -166,7 +166,7 @@ footer {
 										<div class="col-md-9">
 										
 											<s:select name="user.userSex" id="userSex" value="%{#session.user.userSex}"
-												list="#{'true':'男','false':'女'}" label="性别"  headerValue="%{#session.user.userSex}"
+												list="#{'男':'男','女':'女'}" label="性别"  headerValue="%{#session.user.userSex}"
 												cssClass="form-control"></s:select>
 											<br>
 										</div>
@@ -187,15 +187,16 @@ footer {
 										<label class="col-md-3 control-label" for="hometown-input">故乡</label>
 										<div class="col-md-9">
 
-											<select id="seachprov"  class="col-md-3"
-												onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');">
-											</select>&nbsp;&nbsp; <select id="seachcity" 
-												class="col-md-3"
-												onChange="changeCity(this.value,'seachdistrict','seachdistrict');">
-												<option value="0">请选择</option>
-											</select>&nbsp;&nbsp; <span id="seachdistrict_div"> <select
-												id="seachdistrict" class="col-md-3" name="town">
-											</select></span> <input type="button" value="地区码" onClick="showAreaID()" />
+											<select id="cmbP"  class="col-md-3" name="user.userHomeProvince">
+											</select>&nbsp;&nbsp; 
+											<select id="cmbC" 
+												class="col-md-3" name="user.userHomeCity">
+												
+											</select>
+											&nbsp;&nbsp; <span id="seachdistrict_div">
+											 <select
+												id="cmbA" class="col-md-3" name="user.userHomeCounty">
+											</select></span>
 											 <br>
 											 <br>
 										</div>
@@ -206,15 +207,14 @@ footer {
 										<label class="col-md-3 control-label" for="location-input">现居地</label>
 										<div class="col-md-9">
 
-											<select id="seachprov1" name="province1" class="col-md-3"
-												onChange="changeComplexProvince1(this.value, sub_array1, 'seachcity1', 'seachdistrict1');">
-											</select>&nbsp;&nbsp; <select id="seachcity1" name="om.omcity1"
-												class="col-md-3"
-												onChange="changeCity1(this.value,'seachdistrict1','seachdistrict1');">
-												<option value="0">请选择</option>
+											<select id="cmbP1" name="user.userProvince" class="col-md-3">
+											</select>&nbsp;&nbsp;
+											 <select id="cmbC1" name="user.userCity"
+												class="col-md-3">
+												
 											</select>&nbsp;&nbsp; <span id="seachdistrict_div"> <select
-												id="seachdistrict1" class="col-md-3" name="town1">
-											</select></span> <input type="button" value="地区码" onClick="showAreaID1()" />
+												id="cmbA1" class="col-md-3" name="user.userCounty">
+											</select></span> 
 											<br> <br>
 										</div>
 									</div>
@@ -263,6 +263,8 @@ footer {
 							</div>
 
 						</div>
+		
+					</div>
 					</div>
 				</div>
 			</div>
@@ -278,99 +280,6 @@ footer {
 	<script src="assets/js/pages/AreaData_min.js" type="text/javascript"></script>
 	<script src="assets/js/pages/Area1.js" type="text/javascript"></script>
 	<script src="assets/js/pages/AreaData_min1.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		$(function() {
-			initComplexArea('seachprov', 'seachcity', 'seachdistrict',
-					area_array, sub_array, '0', '0', '0');
-		});
-
-		//得到地区码
-		function getAreaID() {
-			var area = 0;
-			if ($("#seachdistrict").val() != "0") {
-				area = $("#seachdistrict").val();
-			} else if ($("#seachcity").val() != "0") {
-				area = $("#seachcity").val();
-			} else {
-				area = $("#seachprov").val();
-			}
-
-			return area;
-		}
-
-		function showAreaID() {
-			//地区码
-			var areaID = getAreaID();
-			//地区名
-			var areaName = getAreaNamebyID(areaID);
-			alert("您选择的地区码：" + areaID + "      地区名：" + areaName);
-		}
-
-		//根据地区码查询地区名
-		function getAreaNamebyID(areaID) {
-			var areaName = "";
-			if (areaID.length == 2) {
-				areaName = area_array[areaID];
-			} else if (areaID.length == 4) {
-				var index1 = areaID.substring(0, 2);
-				areaName = area_array[index1] + " " + sub_array[index1][areaID];
-			} else if (areaID.length == 6) {
-				var index1 = areaID.substring(0, 2);
-				var index2 = areaID.substring(0, 4);
-				areaName = area_array[index1] + " " + sub_array[index1][index2]
-						+ " " + sub_arr[index2][areaID];
-			}
-			return areaName;
-		}
-	</script>
-
-	<script type="text/javascript">
-		$(function() {
-			initComplexArea1('seachprov1', 'seachcity1', 'seachdistrict1',
-					area_array1, sub_array1, '0', '0', '0');
-		});
-
-		//得到地区码
-		function getAreaID1() {
-			var area1 = 0;
-			if ($("#seachdistrict1").val() != "0") {
-				area1 = $("#seachdistrict1").val();
-			} else if ($("#seachcity1").val() != "0") {
-				area1 = $("#seachcity1").val();
-			} else {
-				area1 = $("#seachprov1").val();
-			}
-
-			return area1;
-		}
-
-		function showAreaID1() {
-			//地区码
-			var areaID1 = getAreaID1();
-			//地区名
-			var areaName1 = getAreaNamebyID1(areaID1);
-			alert("您选择的地区码：" + areaID1 + "      地区名：" + areaName1);
-		}
-
-		//根据地区码查询地区名
-		function getAreaNamebyID1(areaID1) {
-			var areaName1 = "";
-			if (areaID1.length == 2) {
-				areaName1 = area_array1[areaID1];
-			} else if (areaID1.length == 4) {
-				var index1 = areaID1.substring(0, 2);
-				areaName1 = area_array1[index1] + " "
-						+ sub_array1[index1][areaID];
-			} else if (areaID1.length == 6) {
-				var index1 = areaID1.substring(0, 2);
-				var index2 = areaID1.substring(0, 4);
-				areaName1 = area_array1[index1] + " "
-						+ sub_array1[index1][index2] + " "
-						+ sub_arr1[index2][areaID1];
-			}
-			return areaName1;
-		}
-	</script>
 	<script type="text/javascript">
 		$(function() {
 			$(".datepicker").datepicker({
