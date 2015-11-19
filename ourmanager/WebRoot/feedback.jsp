@@ -152,8 +152,7 @@
 </script>
 
 </head>
-<body>
-	
+<body>	
 	<div class="feedback wrap1">
 		<div class="panel-heading bk-bg-primary">
 			<h4>
