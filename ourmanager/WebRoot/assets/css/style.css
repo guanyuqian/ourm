@@ -1888,6 +1888,10 @@ margin-left: 0px;
 .form-group label {
 font-weight: normal;
 }
+.form-group span.required {
+ color:#BFEFFF;
+ font-size: 150%;
+}
 .form-control {
 border: 1px solid #e3e6f3;
 border-radius: 0;
@@ -4440,9 +4444,13 @@ color: #171717 !important
 .body-locked small {
 margin: 0;
 }
-/* Login Box & Register Box
+/* Login Box & Register feedback Box
 =================================================================== */
 /* login screens - wrappers */
+.feedback.wrap1{
+margin:0 auto;
+width:530px;
+} 
 .body-login {
 display: table;
 height: 100vh;
@@ -4520,6 +4528,9 @@ font-size: 13px
 font-weight: normal;
 font-size: 1.4rem;
 }
+.body-login .panel-login .panel-body .feedback_colour{
+	color:red;
+}
 /* login screens - elements */
 .body-login .input-group-icon .input-group-addon i,
 .body-register .input-group-icon .input-group-addon i {
@@ -4554,7 +4565,7 @@ text-align: left;
 border-collapse: collapse;
 border-spacing: 0;
 }
-.fc .btn {
+.fc . {
 line-height: 1.2em;
 }
 html .fc {

@@ -162,6 +162,15 @@ footer {
 									</div>
 									<br>
 									<div class="form-group">
+										<label class="col-md-3 control-label" for="email-input">手机号</label>
+										<div class="col-md-9">
+											<td><s:textfield name="user.userNumber"
+													value="%{#session.user.userNumber}" id="userNumber"
+													cssClass="form-control"></s:textfield></td> <br>
+										</div>
+									</div>
+									<br>
+									<div class="form-group">
 										<label class="col-md-3 control-label" for="sex-input">性别</label>
 										<div class="col-md-9">
 										

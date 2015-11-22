@@ -159,6 +159,14 @@ footer {
 									</div>
 									<br>
 									<div class="form-group">
+										<label class="col-md-3 control-label" for="email-input">手机号</label>
+										<div class="col-md-9">
+											<s:property value="%{#session.user.userNumber}" />
+											<br>
+										</div>
+									</div>
+									<br>
+									<div class="form-group">
 										<label class="col-md-3 control-label" for="sex-input">性别</label>
 										<div class="col-md-9">
 											<s:property value="%{#session.user.userSex}" />
@@ -199,16 +207,15 @@ footer {
 										<label class="col-md-3 control-label" for="job-input">工作</label>
 										<div class="col-md-9">
 											<s:property value="%{#session.user.userJob}" />
-
-
+                                         <br> <br>
 										</div>
 									</div>
-									<br> -->
+							
 									<div class="form-group">
 										<label class="col-md-3 control-label" for="birthday-input">生日</label>
 										<div class="col-md-9">
 											<s:property value="%{#session.user.userBirthday}" />
-
+                                           <br> <br>
 										</div>
 									</div>
 									<br>
