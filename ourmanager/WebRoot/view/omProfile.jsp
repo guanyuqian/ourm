@@ -116,16 +116,17 @@ footer {
 			<div class="main " style="min-height: 767px;">
 				<div class="page-header">
 					<div class="pull-right">
-						<h2>个人档案</h2>
+						<h2>集体档案</h2>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6">
-						<div class="panel"
-							style="width: 870px; padding-left: 100px; border-left-width: 0px; margin-left: 130px; padding-top: 50px;">
+				<div class="col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<div class="panel">
 
 							<div class="panel-body"
-								style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
+								>
 								<form class="form-horizontal " enctype="multipart/form-data"
 									method="post" action="">
   	                  <div class="form-group">
@@ -182,7 +183,7 @@ footer {
 						
 								</form>
 							</div>
-
+                         </div>
 						</div>
 					</div>
 				</div>

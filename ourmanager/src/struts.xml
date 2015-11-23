@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<constant name="struts.ui.theme" value="simple" />
@@ -41,7 +41,11 @@
 		</action>
 
 		<action name="loadPurchase" class="PurchaseAction" method="loadPur">
+<<<<<<< HEAD
 			<result name="success">test.jsp</result>
+=======
+			<result name="success">view/personal/purchase.jsp</result>
+>>>>>>> b64ab44c8fa1cb102d71b508c43965bcab6a9b49
 		</action>
 
 		<action name="updateOM" class="OmUpdateAction" method="updateOM">

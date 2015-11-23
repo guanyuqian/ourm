@@ -108,12 +108,13 @@ footer {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6">
-						<div class="panel"
-							style="width: 870px; padding-left: 100px; border-left-width: 0px; margin-left: 130px; padding-top: 50px;">
+				<div class="col-md-12">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<div class="panel">
 
 							<div class="panel-body"
-								style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
+								>
 								<form class="form-horizontal " enctype="multipart/form-data"
 									method="post" action="">
 									<div class="form-group">
@@ -153,6 +154,14 @@ footer {
 										<label class="col-md-3 control-label" for="email-input">邮箱</label>
 										<div class="col-md-9">
 											<s:property value="%{#session.user.userEmail}" />
+											<br>
+										</div>
+									</div>
+									<br>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="email-input">手机号</label>
+										<div class="col-md-9">
+											<s:property value="%{#session.user.userNumber}" />
 											<br>
 										</div>
 									</div>
@@ -198,16 +207,15 @@ footer {
 										<label class="col-md-3 control-label" for="job-input">工作</label>
 										<div class="col-md-9">
 											<s:property value="%{#session.user.userJob}" />
-
-
+                                         <br> <br>
 										</div>
 									</div>
-									<br> -->
+							
 									<div class="form-group">
 										<label class="col-md-3 control-label" for="birthday-input">生日</label>
 										<div class="col-md-9">
 											<s:property value="%{#session.user.userBirthday}" />
-
+                                           <br> <br>
 										</div>
 									</div>
 									<br>
@@ -219,8 +227,9 @@ footer {
 										</div>
 									</div>
 									<br> <br>
-
+       
 								</form>
+								</div>
 							</div>
 						</div>
 					</div>
