@@ -15,9 +15,7 @@
 <base href="<%=basePath%>">
 <!-- Basic -->
 <meta charset="UTF-8" />
-
 <title>Login | Nadhif - Responsive Admin Template</title>
-
 <!-- Mobile Metas -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -135,7 +133,7 @@ $(document).ready(function() {
 							</h2>
 						</div>
 						<div class="panel-body">
-							<s:form action="LoginAction" id="formcheck" method="post">
+							<s:form action="Loginaction" id="formcheck" method="post">
 								<div class="form-group">
 									<label>用户账号</label>
 									<div class="input-group input-group-icon">
