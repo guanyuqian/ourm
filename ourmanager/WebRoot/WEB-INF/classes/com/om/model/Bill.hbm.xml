@@ -10,13 +10,13 @@
             <column name="billid" />
             <generator class="identity" />
         </id>
-        <many-to-one name="userByCreaterUserid" class="com.om.model.User" fetch="select">
+        <many-to-one lazy="false" name="userByCreaterUserid" class="com.om.model.User" fetch="select">
             <column name="creater_userid" not-null="true" />
         </many-to-one>
-        <many-to-one name="userByCheckerUserid" class="com.om.model.User" fetch="select">
+        <many-to-one lazy="false" name="userByCheckerUserid" class="com.om.model.User" fetch="select">
             <column name="checker_userid" not-null="true" />
         </many-to-one>
-        <many-to-one name="om" class="com.om.model.Om" fetch="select">
+        <many-to-one lazy="false" name="om" class="com.om.model.Om" fetch="select">
             <column name="omid" not-null="true" />
         </many-to-one>
         <property name="billName" type="java.lang.String">

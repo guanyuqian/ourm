@@ -26,23 +26,24 @@ public class PurcahseService implements IPurchaseService{
 	//IUserDAO us=new UserDAO();
 	IPurchaseDAO pu=new PurchaseDAO();
 	//IBillDAO bi=new PurchaseDAO();
-	@Override
-	public Set<Purchase> loadPurchase(){
-		// TODO Auto-generated method stub
-		ServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = ((HttpServletRequest) request)
-				.getSession();
-		User nowUser=(User) session.getAttribute("user");		
-		Set purchases=new HashSet( pu.findAll());		
-		nowUser.setPurchases(purchases);
-		return nowUser.getPurchases(); 
-	}
+
 
 	public IPurchaseDAO getPu() {
 		return pu;
 	}
 	public void setPu(IPurchaseDAO pu) {
 		this.pu = pu;
+	}
+
+	@Override
+	public Set<Purchase> loadPurchase() {
+		// TODO Auto-generated method stub
+		ServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = ((HttpServletRequest) request)
+				.getSession();
+		User nowUser=(User) session.getAttribute("user");	
+		return new HashSet( pu.findAll());
+	
 	}
 
 }

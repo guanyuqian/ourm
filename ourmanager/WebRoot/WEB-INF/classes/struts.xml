@@ -41,11 +41,7 @@
 		</action>
 
 		<action name="loadPurchase" class="PurchaseAction" method="loadPur">
-<<<<<<< HEAD
-			<result name="success">test.jsp</result>
-=======
 			<result name="success">view/personal/purchase.jsp</result>
->>>>>>> b64ab44c8fa1cb102d71b508c43965bcab6a9b49
 		</action>
 
 		<action name="updateOM" class="OmUpdateAction" method="updateOM">

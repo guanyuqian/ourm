@@ -10,13 +10,13 @@
             <column name="purchaseid" />
             <generator class="identity" />
         </id>
-        <many-to-one name="bill" class="com.om.model.Bill" fetch="select">
+        <many-to-one lazy="false" name="bill" class="com.om.model.Bill" fetch="select">
             <column name="billid" not-null="true" />
         </many-to-one>
-        <many-to-one name="user" class="com.om.model.User" fetch="select">
+        <many-to-one lazy="false" name="user" class="com.om.model.User" fetch="select">
             <column name="userid" not-null="true" />
         </many-to-one>
-        <many-to-one name="om" class="com.om.model.Om" fetch="select">
+        <many-to-one lazy="false" name="om" class="com.om.model.Om" fetch="select">
             <column name="omid" not-null="true" />
         </many-to-one>
         <property name="purchaseType" type="java.lang.Integer">

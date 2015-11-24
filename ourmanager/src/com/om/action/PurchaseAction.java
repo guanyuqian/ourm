@@ -1,5 +1,6 @@
 package com.om.action;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -23,7 +24,12 @@ public class PurchaseAction extends ActionSupport {
 		this.purchaseService = purchaseService;
 	}
 	public String loadPur(){
+
 		purchaseList=purchaseService.loadPurchase();
+//		purchaseList=new HashSet(0);
+//		purchaseList.add(new Purchase());
+//		purchaseList.add(new Purchase());
+//		purchaseList.add(new Purchase());
 		return SUCCESS;		 
 	 }
 }
