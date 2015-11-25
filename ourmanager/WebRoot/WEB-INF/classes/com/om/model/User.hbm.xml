@@ -9,7 +9,7 @@
         <id name="userid" type="java.lang.Integer">
             <column name="userid" />
         </id>
-        <many-to-one name="om" class="com.om.model.Om" fetch="select">
+        <many-to-one lazy="false" name="om" class="com.om.model.Om" fetch="select">
             <column name="omid" not-null="true" />
         </many-to-one>
         <property name="userName" type="java.lang.String">
@@ -77,6 +77,12 @@
         <property name="userHomeCity" type="java.lang.String">
             <column name="user_home_city" length="20" />
         </property>
+        <set name="billsForCheckerUserid" inverse="true">
+            <key>
+                <column name="checker_userid" not-null="true" />
+            </key>
+            <one-to-many class="com.om.model.Bill" />
+        </set>
         <set name="purchases" inverse="true">
             <key>
                 <column name="userid" not-null="true" />
@@ -88,6 +94,12 @@
                 <column name="userid" not-null="true" />
             </key>
             <one-to-many class="com.om.model.Log" />
+        </set>
+        <set name="billsForCreaterUserid" inverse="true">
+            <key>
+                <column name="creater_userid" not-null="true" />
+            </key>
+            <one-to-many class="com.om.model.Bill" />
         </set>
     </class>
 </hibernate-mapping>

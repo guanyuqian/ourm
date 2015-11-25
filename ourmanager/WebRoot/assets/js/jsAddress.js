@@ -62,6 +62,9 @@ var addressInit = function(_cmbProvince, _cmbCity, _cmbArea, defaultProvince, de
 }
 
 var provinceList = [
+{name:'请选择省', cityList:[		   
+{name:'请选择市', areaList:['请选择县']},		   
+]},
 {name:'北京', cityList:[		   
 {name:'市辖区', areaList:['东城区','西城区','崇文区','宣武区','朝阳区','丰台区','石景山区','海淀区','门头沟区','房山区','通州区','顺义区','昌平区','大兴区','怀柔区','平谷区']},		   
 {name:'县', areaList:['密云县','延庆县']}

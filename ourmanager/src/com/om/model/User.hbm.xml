@@ -9,7 +9,7 @@
         <id name="userid" type="java.lang.Integer">
             <column name="userid" />
         </id>
-        <many-to-one name="om" class="com.om.model.Om" fetch="select">
+        <many-to-one lazy="false" name="om" class="com.om.model.Om" fetch="select">
             <column name="omid" not-null="true" />
         </many-to-one>
         <property name="userName" type="java.lang.String">

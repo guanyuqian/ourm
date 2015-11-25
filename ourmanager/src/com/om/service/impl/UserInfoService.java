@@ -1,5 +1,8 @@
 package com.om.service.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,12 +13,10 @@ import com.om.dao.IUserDAO;
 import com.om.model.User;
 import com.om.service.IUserInfoService;
 
+public class UserInfoService implements IUserInfoService {
 
-public class UserInfoService implements IUserInfoService{
-	
 	private IUserDAO userdao;
-	
-	
+
 	public IUserDAO getUserdao() {
 		return userdao;
 	}
@@ -23,27 +24,28 @@ public class UserInfoService implements IUserInfoService{
 	public void setUserdao(IUserDAO userdao) {
 		this.userdao = userdao;
 	}
-	
-	
+
 	@Override
 	public boolean Update(User user) {
 		ServletRequest request = ServletActionContext.getRequest();
-		HttpSession session = ((HttpServletRequest) request)
-				.getSession();
-		try{
-			User newuser=(User) session.getAttribute("user");
+		HttpSession session = ((HttpServletRequest) request).getSession();
+		try {
+			User newuser = (User) session.getAttribute("user");
 			newuser.setUserEmail(user.getUserEmail());
 			newuser.setUserName(user.getUserName());
 			newuser.setUserSex(user.getUserSex());
 			newuser.setUserAge(user.getUserAge());
 			newuser.setUserBirthday(user.getUserBirthday());
 			newuser.setUserMoto(user.getUserEmail());
-			newuser.setUserHometown(user.getUserHometown());
-			newuser.setUserLocation(user.getUserLocation());
+			newuser.setUserHomeProvince(user.getUserHomeProvince());
+			newuser.setUserHomeCounty(user.getUserHomeCounty());
+			newuser.setUserHomeCity(user.getUserHomeCity());
+			newuser.setUserProvince(user.getUserProvince());
+			newuser.setUserCounty(user.getUserCounty());
+			newuser.setUserCity(user.getUserCity());
 			newuser.setUserJob(user.getUserJob());
 			userdao.attachDirty(newuser);
-		}catch(Exception ex)
-		{
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.err.println("更新出现错误");
 			return false;
@@ -51,4 +53,12 @@ public class UserInfoService implements IUserInfoService{
 		return true;
 	}
 
+	@Override
+	public Set<User>  LoardAllUser() {
+		try {
+			return new HashSet(userdao.findAll());
+		} catch (Exception e) {	
+			return null;
+		}
+	}
 }

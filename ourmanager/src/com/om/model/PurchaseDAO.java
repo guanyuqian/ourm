@@ -2,6 +2,7 @@ package com.om.model;
 
 import java.sql.Timestamp;
 import java.util.List;
+
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.om.dao.IPurchaseDAO;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -24,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author MyEclipse Persistence Tools
  */
 @Transactional
-public class PurchaseDAO {
+public class PurchaseDAO implements IPurchaseDAO{
 	private static final Logger log = LoggerFactory
 			.getLogger(PurchaseDAO.class);
 	// property constants

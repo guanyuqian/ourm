@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<constant name="struts.ui.theme" value="simple" />
@@ -18,12 +18,11 @@
 		<default-interceptor-ref name="defaultInterceptorss"></default-interceptor-ref>
 		<global-results>
 			<result name="login_fail">/login.jsp</result>
-			<result name="data_ini">/profile.jsp</result>
+			<result name="data_ini">view/profile.jsp</result>
 		</global-results>
-
-		<action name="LoginAction" class="LoginAction" method="loginuser">
+		<action name="Loginaction" class="Loginaction" method="loginuser">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success">view/index.jsp</result>
+			<result name="success">view/profile.jsp</result>
 		</action>
 		<action name="buildOM" class="OmBuildAction" method="buildOM">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
@@ -32,14 +31,29 @@
 		</action>
 
 		<action name="Update" class="UserInfoUpdateAction" method="Update">
-		<result name="success">/login.jsp</result>
+			<result name="success">view/profile.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 		<action name="test" class="OmServiceAction" method="test">
 			<result name="success" type="json"></result>
 
+
 		</action>
+		<action name="menberlistAction" class="UserInfoUpdateAction"
+			method="LoardAllUser">
+			<result name="success">view/collectivity/allMember.jsp</result>
+		</action>
+		<action name="loadPurchase" class="PurchaseAction" method="loadPur">
+			<result name="success">view/personal/purchase.jsp</result>
+		</action>
+
 		<action name="updateOM" class="OmUpdateAction" method="updateOM">
-		<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="jsonAjax" class="com.zxt.JsonAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- 将返回类型设置为json -->
+			<result type="json"></result>
 		</action>
 	</package>
 </struts>    
