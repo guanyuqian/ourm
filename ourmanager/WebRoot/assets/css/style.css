@@ -4451,6 +4451,10 @@ margin: 0;
 margin:0 auto;
 width:530px;
 } 
+.creatbill.wrap1{
+margin:0 auto;
+width:530px;
+}
 .body-login {
 display: table;
 height: 100vh;
@@ -4460,6 +4464,14 @@ padding: 0 15px;
 width: 100%;
 }
 .body-register {
+display: table;
+height: 100vh;
+margin: -20px auto 0 auto;
+max-width:650px;
+padding: 0 15px;
+width: 100%;
+}
+.body-creatbill {
 display: table;
 height: 100vh;
 margin: -20px auto 0 auto;
@@ -4491,6 +4503,18 @@ background: transparent;
 background-color: #435D78;
 border-radius: 0;
 color: #FFF;
+display: inline-block;
+font-size: 15px;
+font-size: 1.5rem;
+line-height: 20px;
+line-height: 2rem;
+padding: 13px 17px;
+vertical-align: bottom;
+}
+.body-creatbill .panel-creatbill .panel-title-creatbill .title {
+background-color: #435D78;
+border-radius: 0;
+color: red;
 display: inline-block;
 font-size: 15px;
 font-size: 1.5rem;
