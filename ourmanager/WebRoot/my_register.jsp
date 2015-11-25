@@ -100,7 +100,6 @@ $(document).ready(function(){
 	
 	<div class="container-fluid content">
 		<div class="row">
-			<!-- Main Page -->
 			<div class="body-register">
 				<div class="center-register">
 					<a href="#" class="logo pull-left hidden-xs"> <img
