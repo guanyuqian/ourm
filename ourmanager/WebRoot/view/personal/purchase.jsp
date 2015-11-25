@@ -167,7 +167,7 @@ $("#money").show();
        <tbody>
        <tr>
 <td><s:property value="pur.userid"/></td>
-<td>${bill}</td>
+<td>${bill.billName}</td>
 <td>${user}</td>
 <td>${om}</td>
 <td>${purchaseType} </td>

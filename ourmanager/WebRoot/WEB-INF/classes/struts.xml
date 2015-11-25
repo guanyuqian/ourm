@@ -39,7 +39,10 @@
 
 
 		</action>
-
+		<action name="menberlistAction" class="UserInfoUpdateAction"
+			method="LoardAllUser">
+			<result name="success">view/collectivity/allMember.jsp</result>
+		</action>
 		<action name="loadPurchase" class="PurchaseAction" method="loadPur">
 			<result name="success">view/personal/purchase.jsp</result>
 		</action>

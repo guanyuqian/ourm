@@ -1,8 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -107,69 +109,70 @@ footer {
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.inputmask.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(function() {	
-	
-         
+	$(document).ready(function() {
+		cosole.log();
 	});
-	
 </script>
-  </head>
- 
-  <body>
-  <jsp:include page="/view/home.jsp"></jsp:include>
-   <s:form id="billMoney" action="Update" method="post">
-      <div class="main sidebar-minified" style="min-height: 767px;">
-      <div class="page-header">
+</head>
 
-<div class="pull-right">
-<h2>通讯录</h2>
-</div>
-</div>
-      <div class="row">
-      <div class="col-lg-6">
-      <div class="panel" style="width: 870px; padding-left: 100px; border-left-width: 0px; margin-left: 130px; padding-top: 50px;">
-     
+<body>
+	<jsp:include page="/view/home.jsp"></jsp:include>
+	<s:form id="billMoney" action="Update" method="post">
+		<div class="main sidebar-minified" style="min-height: 767px;">
+			<div class="page-header">
 
-       <div class="panel-body" 	
-       style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
-       
-       <div class="table-responsive">
-         <table  class="table">
-        <thead>
-       <tr>
-
-<th>账号</th>
-<th>昵称</th>
-<th>性别</th>
-<th>邮箱</th>
-<th>电话</th>
-<th>余额</th>
-<th>权限</th>
+				<div class="pull-right">
+					<h2>通讯录</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="panel"
+						style="width: 870px; padding-left: 100px; border-left-width: 0px; margin-left: 130px; padding-top: 50px;">
 
 
-</tr>
-</thead>
+						<div class="panel-body"
+							style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
 
-<s:iterator value="memberList" >
+							<div class="table-responsive">
+								<table class="table">
+									<thead>
+										<tr>
 
-  <tbody>
-   <tr>
-        <td><s:property value="user.userid"/></td>
-        <td><s:property value="user.userName"/></td>
-        <td><s:property value="user.userSex"/></td>
-         <td><s:property value="user.userEmail"/></td>
-         <td><s:property value="user.userNumber"/></td>
-         <td><s:property value="user.userBlance"/></td>
-         <td><s:property value="user.userLimit"/></td>
-         <!-- <td><button class="label label-warning" type="button" >
+											<th>账号</th>
+											<th>昵称</th>
+											<th>性别</th>
+											<th>邮箱</th>
+											<th>电话</th>
+											<th>余额</th>
+											<th>权限</th>
+
+
+										</tr>
+									</thead>
+
+									<s:iterator value="AllUsers" id="user">
+
+
+										<tbody>
+											<tr>
+												<td><s:property value="user.userid" /></td>
+												<td>${userName}</td>
+												<td><s:property value="user.userName" /></td>
+												<td><s:property value="user.userSex" /></td>
+												<td><s:property value="user.userEmail" /></td>
+												<td><s:property value="user.userNumber" /></td>
+												<td><s:property value="user.userBlance" /></td>
+												<td><s:property value="user.userLimit" /></td>
+												<!-- <td><button class="label label-warning" type="button" >
                                       查看详情
        </button></td> -->
-   </tr>
-     </tbody>
-</s:iterator>
-</table>
+											</tr>
+										</tbody>
+									</s:iterator>
+								</table>
 
-<!--  <table class="table" id="1" >
+								<!--  <table class="table" id="1" >
        <thead>
        <tr>
 
@@ -204,13 +207,13 @@ footer {
 
 </tbody>
 </table>
-   -->      
-</div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </s:form>
-  </body>
+   -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</s:form>
+</body>
 </html>

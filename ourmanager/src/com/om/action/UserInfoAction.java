@@ -1,5 +1,7 @@
 package com.om.action;
 
+import java.util.Set;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,7 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UserInfoAction extends ActionSupport {
 	private IUserInfoService userInfoService;
 	private User user;
-
+	private Set<User> AllUsers;
 	public IUserInfoService getUserInfoService() {
 		return userInfoService;
 	}
@@ -41,5 +43,21 @@ public class UserInfoAction extends ActionSupport {
 			return ERROR;
 	}
 	
-	
+	public String LoardAllUser()
+	{
+		
+		AllUsers=userInfoService.LoardAllUser();
+
+		return SUCCESS;
+
+
+	}
+
+	public Set<User> getAllUsers() {
+		return AllUsers;
+	}
+
+	public void setAllUsers(Set<User> allUsers) {
+		AllUsers = allUsers;
+	}	
 }
