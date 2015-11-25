@@ -48,7 +48,13 @@ $(document).ready(function() {
 			}else if(rag.test(num3)==""){
 				num3="0";
 			}
-		
+		    
+			
+			var int_k=parseInt(num),int_k1=parseInt(num1),int_k2=parseInt(num2),int_k3=parseInt(num3);
+			if(int_k<int_k2+int_k3+int_k1){
+				alert("集体人数要大于等于其他人数之和");
+				return false;
+			}
 			$("formcheck").submit();
 		
 			
