@@ -1,6 +1,9 @@
 package com.om.service.impl;
+import com.om.action.UserInfoAction;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletRequest;
@@ -54,9 +57,9 @@ public class UserInfoService implements IUserInfoService {
 	}
 
 	@Override
-	public Set<User>  LoardAllUser() {
+	public List<User>  LoardAllUser(int page) {
 		try {
-			return new HashSet(userdao.findAll());
+			return userdao.findByPage( page,UserInfoAction.ONE_PAGE_NUM) ;
 		} catch (Exception e) {	
 			return null;
 		}

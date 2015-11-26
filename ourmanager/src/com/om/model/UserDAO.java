@@ -256,4 +256,19 @@ public class UserDAO  implements IUserDAO{
 	public static UserDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (UserDAO) ctx.getBean("UserDAO");
 	}
+
+	public List findByPage(int page,int pageNum) {
+		log.debug("finding all User instances");
+		try {
+			String queryString = "from User";
+			Query queryObject = getCurrentSession().createQuery(queryString);
+			queryObject.setFirstResult(pageNum*(page-1));  
+			queryObject.setMaxResults(pageNum);  
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("findByPage  failed", re);
+			throw re;
+		}
+	}
+
 }
