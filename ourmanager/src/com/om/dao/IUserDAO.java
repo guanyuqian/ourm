@@ -9,4 +9,5 @@ public interface IUserDAO {
 	public List findAll();
 	public User findById(java.lang.Integer id) ;
 	public void attachDirty(User instance) ;
+	public List findByPage(int page,int pageNum) ;
 }
