@@ -81,6 +81,7 @@ public class UserInfoAction extends ActionSupport {
 //		<th>电话</th>
 //		<th>余额</th>
 //		<th>权限</th>
+		Users.clear();
 		System.out.println("in loadmembers");
 		for (User u : list) {
 			Map us=new HashMap();

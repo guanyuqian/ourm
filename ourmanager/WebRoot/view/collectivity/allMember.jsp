@@ -111,7 +111,23 @@ footer {
 <script src="jquery.inputmask.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+	//初始化加载第一页
 		console.log();
+		$.ajax({
+				type : "POST",
+				url : "menberlistAction",
+				data : {page:1},
+				dataType : 'json', 
+				success : function(data) {
+					console.log(data);//可在前台观看返回结果
+					//var obj = $.parseJSON(data); //当使用dataType : 'text'时，使用这个方法解析json
+		},
+				error : function(json) {
+				alert("json=" + json);
+					console.log(json);
+					return false;
+				}
+		});
 	});
 </script>
 <script type="text/javascript">
