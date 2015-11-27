@@ -90,70 +90,79 @@
 
 <script>
 	$(document).ready(function() {
-		var id_count = <s:property value="om.omid" />;
-		var superManager_count = <s:property value="superManagerCount" />;
-		var financeManage_count = <s:property value="financeManagerCount" />;
-		var manager_count = <s:property value="managerCount" />;
-		var member_count = <s:property value="om.headcount" />;
-		var first = id_count * 1000+1;
-		var second = first + superManager_count-1;
-		var first1 = second + 1;
-		var second1 = first1 + financeManage_count-1;
-		var first2 = second1 + 1;
-		var second2 = first2 + manager_count-1;
-		var first3 = second2+1;
-		var second3 = first+member_count-1;
+						var id_count = <s:property value="om.omid" />;
+						var superManager_count = <s:property value="superManagerCount" />;
+						var financeManage_count = <s:property value="financeManagerCount" />;
+						var manager_count = <s:property value="managerCount" />;
+						var member_count = <s:property value="om.headcount" />;
+						var ordinary_members = member_count - manager_count
+								- financeManage_count - superManager_count;
 
-		var x_Manager = first + '～'  + second;
-		var l_Manager = first1 + '～' + second1;
-		var m_Manager = first2 + '～' + second2;
-		var s_Manager = first3 + '～' + second3;
-			
-		if(first==second){
-			$("#xl").html(first);
-		}
-		else{
-			$("#xl").html(x_Manager);                //超管
-		}
-		if(financeManage_count==0){
-			$("#ll").html("");
-		}
-		else 
-			if(financeManage_count==1){
-			$("#ll").html(first1);
-		}
-			else{
-				$("#ll").html(l_Manager);              //财政
-				}
-		
-		if(manager_count==0){
-			$("#mm").html("");
-		}
-		else 
-			if(manager_count==1){
-			$("#mm").html(first2);
-		}
-			else{
-				$("#mm").html(m_Manager);               //普管
-				}
-		
-		if(first3==second3){
-			$("#mm").html(first3);
-		}
-		if(first3>second3){
-			$("#mm").html("");
-		}
-		else{
-			$("#ss").html(s_Manager);               //成员
-		}
-		                  
+						var first = id_count * 1000 + 1;
+						var second = first + superManager_count - 1;
+						var x_Manager = first+ '～' + second;
+						if (superManager_count == 1) {
+							$("#xl").html(first);
+						} else {
+							$("#xl").html(x_Manager); //超管
+						}
 
-	});
+						var first1;
+						var second1;
+						if (financeManage_count == 0) {
+							first1=first;
+							second1=second;
+							$("#ll").html("");
+						} else {
+							first1=first+1;
+							second1=first1+financeManage_count-1;
+							var l_Manager = first1 + '～' + second1;
+							if (financeManage_count == 1) {
+								$("#ll").html(first1);
+							} else {
+								$("#ll").html(l_Manager); //财政
+							}
+						}
+
+						var first2;                            //普管
+						var second2;
+						if (manager_count == 0) {
+							first2=first1;
+							second2=second1;
+							$("#mm").html("");
+						} else {
+							first2=second1+1;
+							second2=first2+manager_count-1;
+							var m_Manager = first2 + '～' + second2;
+							if (manager_count == 1) {
+								$("#mm").html(first2);
+							} else {
+								$("#mm").html(m_Manager); 
+							}
+						}
+					
+						var first3;                            //成员
+						var second3;
+						if (ordinary_members == 0) {
+							first3=first2;
+							second3=second2;
+							$("#ss").html("");
+						} else {
+							first3=second2+1;
+							second3=first3+ordinary_members-1;
+							var s_Manager = first3 + '～' + second3;
+							if (ordinary_members == 1) {
+								$("#ss").html(first3);
+							} else {
+								$("#ss").html(s_Manager); 
+							}
+						}
+
+					});
 </script>
 
 </head>
 <body>
-	
 	<div class="feedback wrap1">
 		<div class="panel-heading bk-bg-primary">
 			<h4>
@@ -201,14 +210,15 @@
 				</div>
 				<div class="col-lg-11"></div>
 				<center>
-					<button onclick="window.location='login.jsp'" class="btn btn-primary hidden-xs text-center">点此跳转到登录页面</button>
+					<button onclick="window.location='login.jsp'"
+						class="btn btn-primary hidden-xs text-center">点此跳转到登录页面</button>
 				</center>
-				
-					<button   onclick="window.location='login.jsp'"
-						class="btn btn-primary btn-block btn-lg visible-xs bk-margin-top-10">点此跳转到登录页面</button>
-				
+
+				<button onclick="window.location='login.jsp'"
+					class="btn btn-primary btn-block btn-lg visible-xs bk-margin-top-10">点此跳转到登录页面</button>
+
 				<div>
-					<div class="text-with-hr" >
+					<div class="text-with-hr">
 						<span>一</span>
 					</div>
 				</div>
