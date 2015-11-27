@@ -17,7 +17,7 @@ import net.sf.json.JSONObject;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.annotations.JSON;
-
+import com.om.model.Om;
 import com.om.model.User;
 import com.om.service.IUserInfoService;
 import com.opensymphony.xwork2.ActionContext;
@@ -56,6 +56,16 @@ public class UserInfoAction extends ActionSupport {
 
 	static final public int ONE_PAGE_NUM = 12;
 
+	public int LAGE_PAGE = 1;
+	public int getLAGE_PAGE() {
+		ServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = ((HttpServletRequest) request).getSession();
+		int omid=((Om) session.getAttribute("om")).getOmid();
+		LAGE_PAGE=userInfoService.AllUserCount(omid)/12+1;
+		return LAGE_PAGE;
+	}
+
+
 
 	public int getPage() {
 		return page;
@@ -73,7 +83,11 @@ public class UserInfoAction extends ActionSupport {
 
 	public String loadMembers() throws IOException {
 		//list = new ArrayList();
-		List<User> list = userInfoService.LoardAllUser(page);
+		System.out.println("in loadmembers");
+		ServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = ((HttpServletRequest) request).getSession();
+		int omid=((Om) session.getAttribute("om")).getOmid();
+		List<User> list = userInfoService.LoardSomeUser(page,omid);
 //		<th>账号</th>
 //		<th>昵称</th>
 //		<th>性别</th>
@@ -82,7 +96,8 @@ public class UserInfoAction extends ActionSupport {
 //		<th>余额</th>
 //		<th>权限</th>
 		Users.clear();
-		System.out.println("in loadmembers");
+		System.out.println("PAGE_LAST:"+getLAGE_PAGE() );
+	//	System.out.println("in loadmembers");
 		for (User u : list) {
 			Map us=new HashMap();
 			us.put("userid", u.getUserid());

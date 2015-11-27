@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -111,52 +111,79 @@ footer {
 <script src="jquery.inputmask.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-	//初始化加载第一页
+		//初始化加载第一页
 		console.log();
-		$.ajax({
-				type : "POST",
-				url : "menberlistAction",
-				data : {page:1},
-				dataType : 'json', 
-				success : function(data) {
-					console.log(data);//可在前台观看返回结果
-					//var obj = $.parseJSON(data); //当使用dataType : 'text'时，使用这个方法解析json
-		},
-				error : function(json) {
-				alert("json=" + json);
-					console.log(json);
-					return false;
-				}
-		});
+		func(1);
 	});
 </script>
 <script type="text/javascript">
-function func(i) {
-	    alert(i);
-  
+	function func(i) {
 		//提交的参数，name和inch是和struts action中对应的接收变量
-			var params = {
+		var params = {
 			page : i
 		};
-			$.ajax({
-				type : "POST",
-				url : "menberlistAction",
-				data : params,
-				dataType : 'json', 
-				success : function(data) {
-					console.log(data);//可在前台观看返回结果
-					//var obj = $.parseJSON(data); //当使用dataType : 'text'时，使用这个方法解析json
-		},
-				error : function(json) {
-				alert("json=" + json);
-					console.log(json);
-					return false;
-				}
-		});
-	
+		$
+				.ajax({
+					type : "POST",
+					url : "menberlistAction",
+					data : params,
+					dataType : 'json',
+					success : function(data) {
+						console.log(data);
+						var users = data.users;
+						$("#table").empty();
+						$
+								.each(
+										users,
+										function(i, item) {
+											var limit = "未命名";
+											if (item.userLimit == 0)
+												limit = "超级管理员";
+											else if (item.userLimit == 1)
+												limit = "资金管理员 ";
+											else if (item.userLimit == 2)
+												limit = "管理员";
+											else if (item.userLimit == 3)
+												limit = "成员";
+											console.log(item.userid + ","
+													+ item.userName);
+											var html = "<tr  onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
+													+ "<td>"
+													+ item.userid
+													+ "</td>"
+													+ "<td>"
+													+ item.userName
+													+ "</td>"
+													+ "<td>"
+													+ item.userSex
+													+ "</td>"
+													+ "<td>"
+													+ item.userEmail
+													+ "</td>"
+													+ "<td>"
+													+ item.userNumber
+													+ "</td>"
+													+ "<td>"
+													+ item.userBalance
+													+ "</td>"
+													+ "<td>"
+													+ limit
+													+ "</td> </tr>";
+
+											$("#table").append(html);
+
+											//		<!-- <td><button class="label label-warning" type="button" >
+											//                       查看详情
+											// </button></td> -->
+										});
+					},
+					error : function(json) {
+						alert("json=" + json);
+						console.log(json);
+						return false;
+					}
+				});
 	}
-
-
 </script>
 </head>
 
@@ -196,42 +223,28 @@ function func(i) {
 										</tr>
 									</thead>
 
-									<s:iterator value="AllUsers" id="user">
 
 
-										<tbody>
-										<tr ondblclick="func1(${userid})" onmouseover="this.style.backgroundColor='#D1EEEE'"  onmouseout="this.style.backgroundColor=''" >
-											
-												<td>${userid}</td>
-												<td>${userName}</td>
-										
-												<td>${userSex}</td>
-												<td>${userEmail}</td>
-												<td>${userNumber}</td>
-												<td>${userBalance}</td>
-																					
-											<td><s:if test='userLimit ==0'>超级管理员       </s:if> 
-                                                <s:if test='userLimit ==1'>资金管理员       </s:if> 
-                                                <s:if test='userLimit ==2'>管理员       </s:if> 
-                                               <s:if test='userLimit ==3'>成员     </s:if> 
-                                           </td>
-												<!-- <td><button class="label label-warning" type="button" >
-                                      查看详情
-       </button></td> -->
-											</tr>
-										</tbody>
-									</s:iterator>
+
+									<tbody id="table">
+
+									</tbody>
+
 								</table>
 
 
-						<div class="btn-toolbar" role="toolbar">
-<div class="bk-margin-5 btn-group">
-<c:forEach var="i" begin="1" end="9" step="1">
-<button class="btn btn-default" type="button" id=i onClick="func(${i})" >${i} </button>
-</c:forEach>
-
-</div>
-</div>
+								<div class="btn-toolbar" role="toolbar">
+									<div class="bk-margin-5 btn-group">
+										<button class="btn btn-default" type="button" id="1"
+											onClick="func(1)">最前页</button> 
+										<c:forEach var="i" begin="1" end="${LAGE_PAGE}+1" step="1">
+											<button class="btn btn-default" type="button" id=i
+												onClick="func(${i})">${i}</button>
+										</c:forEach>
+										<button class="btn btn-default" type="button" id="${LAGE_PAGE}+1"
+											onClick="func(${LAGE_PAGE}+1)">最后页</button>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

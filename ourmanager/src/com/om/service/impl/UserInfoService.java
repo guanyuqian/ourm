@@ -56,12 +56,25 @@ public class UserInfoService implements IUserInfoService {
 		return true;
 	}
 
+
 	@Override
-	public List<User>  LoardAllUser(int page) {
+	public List<User> LoardSomeUser(int page, int omid) {
+		// TODO Auto-generated method stub
 		try {
-			return userdao.findByPage( page,UserInfoAction.ONE_PAGE_NUM) ;
+			
+			return userdao.findByPage( page,UserInfoAction.ONE_PAGE_NUM,omid) ;
 		} catch (Exception e) {	
 			return null;
+		}
+	}
+
+	@Override
+	public int AllUserCount(int omid) {
+		// TODO Auto-generated method stub
+		try {
+			return userdao.findByOm(omid).size();
+		} catch (Exception e) {	
+			return 0;
 		}
 	}
 }

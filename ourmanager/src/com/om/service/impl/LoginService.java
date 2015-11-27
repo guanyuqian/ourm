@@ -35,9 +35,11 @@ public class LoginService implements ILoginService {
 					session.removeAttribute("LoginMessage");
 					session.removeAttribute("user");
 					session.setAttribute("user", result_user);
+					session.setAttribute("om", result_user.getOm());
 					return true;
-				} else
+				} else{
 					session.setAttribute("LoginMessage", "PassWord Error");
+				}
 			}
 		} catch (Exception ex) {
 			System.err.println("Login Exception");

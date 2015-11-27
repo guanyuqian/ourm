@@ -9,6 +9,6 @@ import com.om.model.User;
 
 public interface IUserInfoService {
 	public boolean Update(User user);
-	public List<User> LoardAllUser(int page);
-
+	public List<User> LoardSomeUser(int page,int omid);
+	public int AllUserCount(int omid);
 }

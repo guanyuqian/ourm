@@ -257,10 +257,11 @@ public class UserDAO  implements IUserDAO{
 		return (UserDAO) ctx.getBean("UserDAO");
 	}
 
-	public List findByPage(int page,int pageNum) {
+	public List findByPage(int page,int pageNum,int omid) {
 		log.debug("finding all User instances");
 		try {
-			String queryString = "from User";
+			String queryString = "from User as model where model.om.omid = '"+omid+"'";
+
 			Query queryObject = getCurrentSession().createQuery(queryString);
 			queryObject.setFirstResult(pageNum*(page-1));  
 			queryObject.setMaxResults(pageNum);  
@@ -268,6 +269,15 @@ public class UserDAO  implements IUserDAO{
 		} catch (RuntimeException re) {
 			log.error("findByPage  failed", re);
 			throw re;
+		}
+	}
+
+	@Override
+	public List findByOm(int omid) {
+		try{
+		return findByProperty("om.omid",omid);
+		}catch (Exception e){
+			return null; 
 		}
 	}
 
