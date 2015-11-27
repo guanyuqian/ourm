@@ -37,9 +37,13 @@
 		<action name="test" class="OmServiceAction" method="test">
 			<result name="success" type="json"></result>
 		</action>
-		<action name="menberlistAction" class="UserInfoUpdateAction" method="loadMembers">
+		<action name="menberlistAction" class="UserInfoUpdateAction"
+			method="loadMembers">
 			<result name="success" type="json"></result>
-			
+		</action>
+		<action name="LoadMembers" class="UserInfoUpdateAction"
+			method="MembersCount">
+			<result name="success">view/collectivity/allMember.jsp</result>
 		</action>
 		<action name="loadPurchase" class="PurchaseAction" method="loadPur">
 			<result name="success">view/personal/purchase.jsp</result>

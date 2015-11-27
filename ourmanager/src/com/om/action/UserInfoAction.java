@@ -78,7 +78,10 @@ public class UserInfoAction extends ActionSupport {
 		return Users;
 	}
 
-
+	public String MembersCount(){
+		getPage();
+		return SUCCESS;
+	}
 	private int page;
 
 	public String loadMembers() throws IOException {

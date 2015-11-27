@@ -112,6 +112,7 @@ footer {
 <script type="text/javascript">
 	$(document).ready(function() {
 		//初始化加载第一页
+		var LP=5;
 		console.log();
 		func(1);
 	});
@@ -176,6 +177,7 @@ footer {
 											//                       查看详情
 											// </button></td> -->
 										});
+										
 					},
 					error : function(json) {
 						alert("json=" + json);
@@ -207,7 +209,7 @@ footer {
 							style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
 
 							<div class="table-responsive">
-								<table class="table">
+								<table class="table" >
 									<thead>
 										<tr>
 
@@ -233,16 +235,16 @@ footer {
 								</table>
 
 
-								<div class="btn-toolbar" role="toolbar">
+								<div class="btn-toolbar" role="toolbar" id="tollbar">
 									<div class="bk-margin-5 btn-group">
 										<button class="btn btn-default" type="button" id="1"
 											onClick="func(1)">最前页</button> 
-										<c:forEach var="i" begin="1" end="${LAGE_PAGE}+1" step="1">
+										<c:forEach var="i" begin="1" end="${LAGE_PAGE}" step="1">
 											<button class="btn btn-default" type="button" id=i
 												onClick="func(${i})">${i}</button>
 										</c:forEach>
-										<button class="btn btn-default" type="button" id="${LAGE_PAGE}+1"
-											onClick="func(${LAGE_PAGE}+1)">最后页</button>
+										<button class="btn btn-default" type="button" id="${LAGE_PAGE}"
+											onClick="func(${LAGE_PAGE})">最后页</button>
 									</div>
 								</div>
 							</div>
