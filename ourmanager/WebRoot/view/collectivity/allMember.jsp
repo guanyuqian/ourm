@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -110,8 +111,36 @@ footer {
 <script src="jquery.inputmask.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		cosole.log();
+		console.log();
 	});
+</script>
+<script type="text/javascript">
+function func(i) {
+	    alert(i);
+  
+		//提交的参数，name和inch是和struts action中对应的接收变量
+			var params = {
+			page : i
+		};
+			$.ajax({
+				type : "POST",
+				url : "menberlistAction",
+				data : params,
+				dataType : 'json', 
+				success : function(data) {
+					console.log(data);//可在前台观看返回结果
+					//var obj = $.parseJSON(data); //当使用dataType : 'text'时，使用这个方法解析json
+		},
+				error : function(json) {
+				alert("json=" + json);
+					console.log(json);
+					return false;
+				}
+		});
+	
+	}
+
+
 </script>
 </head>
 
@@ -155,15 +184,21 @@ footer {
 
 
 										<tbody>
-											<tr>
-												<td><s:property value="user.userid" /></td>
+										<tr ondblclick="func1(${userid})" onmouseover="this.style.backgroundColor='#D1EEEE'"  onmouseout="this.style.backgroundColor=''" >
+											
+												<td>${userid}</td>
 												<td>${userName}</td>
-												<td><s:property value="user.userName" /></td>
-												<td><s:property value="user.userSex" /></td>
-												<td><s:property value="user.userEmail" /></td>
-												<td><s:property value="user.userNumber" /></td>
-												<td><s:property value="user.userBlance" /></td>
-												<td><s:property value="user.userLimit" /></td>
+										
+												<td>${userSex}</td>
+												<td>${userEmail}</td>
+												<td>${userNumber}</td>
+												<td>${userBalance}</td>
+																					
+											<td><s:if test='userLimit ==0'>超级管理员       </s:if> 
+                                                <s:if test='userLimit ==1'>资金管理员       </s:if> 
+                                                <s:if test='userLimit ==2'>管理员       </s:if> 
+                                               <s:if test='userLimit ==3'>成员     </s:if> 
+                                           </td>
 												<!-- <td><button class="label label-warning" type="button" >
                                       查看详情
        </button></td> -->
@@ -172,42 +207,15 @@ footer {
 									</s:iterator>
 								</table>
 
-								<!--  <table class="table" id="1" >
-       <thead>
-       <tr>
 
-<th>账号</th>
-<th>昵称</th>
-<th>性别</th>
-<th>邮箱</th>
-<th>电话</th>
-<th>余额</th>
-<th>权限</th>
-<th>详情</th>
+						<div class="btn-toolbar" role="toolbar">
+<div class="bk-margin-5 btn-group">
+<c:forEach var="i" begin="1" end="9" step="1">
+<button class="btn btn-default" type="button" id=i onClick="func(${i})" >${i} </button>
+</c:forEach>
 
-</tr>
-</thead>
-       <tbody>
-       <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>
-<button class="label label-warning" type="button" id="2" >
-                                      查看详情
-       </button>
-</td>
-</tr>
-
-
-
-</tbody>
-</table>
-   -->
+</div>
+</div>
 							</div>
 						</div>
 					</div>
