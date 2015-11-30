@@ -108,127 +108,139 @@ footer {
 					</div>
 				</div>
 				<div class="row">
-				<div class="col-md-12">
-					<div class="col-md-1"></div>
 					<div class="col-md-10">
-						<div class="panel">
+						<div class="col-md-3"></div>
+						<div class="col-md-8">
+							<div class="panel">
 
-							<div class="panel-body"
-								>
-								<form class="form-horizontal " enctype="multipart/form-data"
-									method="post" action="">
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="name-input">昵称</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userName}" />
-											<br>
+								<div class="panel-body">
+									<form class="form-horizontal " enctype="multipart/form-data"
+										method="post" action="">
 
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="name-input">权限</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userLimit}" />
-											<br>
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="name-input">账户</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userid}" />
-											<br>
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="name-input">账户余额</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userBalance}" />
-											<br>
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="email-input">邮箱</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userEmail}" />
-											<br>
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="email-input">手机号</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userNumber}" />
-											<br>
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="sex-input">性别</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userSex}" />
-											<br>
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="moto-input">签名档</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userMoto}" />
-
-											<br>
-										</div>
-									</div>
-									<br>
-
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="hometown-input">故乡</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userHometown}" />
+                        <hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:15px;">昵称</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userName}" />
 
 
-										</div>
-									</div>
-									<br>
-
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="location-input">现居地</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userLocation}" />
-
-											<br> <br>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="job-input">工作</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userJob}" />
-                                         <br> <br>
-										</div>
-									</div>
-							
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="birthday-input">生日</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userBirthday}" />
-                                           <br> <br>
-										</div>
-									</div>
-									<br>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="age-input">年龄</label>
-										<div class="col-md-9">
-											<s:property value="%{#session.user.userAge}" />
+											</div>
 
 										</div>
-									</div>
-									<br> <br>
-       
-								</form>
+
+
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:15px;">权限</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userLimit}" />
+
+											</div>
+										</div>
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:15px;">账户</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userid}" />
+												<br>
+											</div>
+										</div>
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:15px;">账户余额</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userBalance}" />
+												<br>
+											</div>
+										</div>
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:15px;">邮箱</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userEmail}" />
+
+											</div>
+										</div>
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:15px;">手机号</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userNumber}" />
+												<br>
+											</div>
+										</div>
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:15px;">性别</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userSex}" />
+
+											</div>
+										</div>
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:16px;">签名档</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userMoto}" />
+
+											</div>
+										</div>
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:16px;">故乡</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userHometown}" />
+
+
+											</div>
+										</div>
+<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:16px;">现居地</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userLocation}" />
+
+
+											</div>
+										</div>
+										<br> <br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:16px;">工作</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userJob}" />
+
+											</div>
+										</div>
+										<br>
+
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:16px;">生日</label>
+											<div class="col-md-6"></div>
+										</div>
+										<br>
+										<hr />
+										<div class="form-group">
+											<label class="col-md-4 control-label" style="font-size:16px;">年龄</label>
+											<div class="col-md-6">
+												<s:property value="%{#session.user.userAge}" />
+
+											</div>
+										</div>
+										   <br>
+                        <hr />
+
+									</form>
 								</div>
 							</div>
 						</div>

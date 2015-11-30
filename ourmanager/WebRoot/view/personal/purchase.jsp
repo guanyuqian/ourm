@@ -149,32 +149,27 @@ $("#money").show();
       <div class="panel" >
      
 
-   <s:iterator value="purchaseList" id="purchaseList">
-   <s:property value="#purchaseList"/>
-   </s:iterator >
        
        <div class="table-responsive" >
        <table class="table" id="usermoney">
        <thead>
        <tr>
+<th>账单名</th>
+<th>消费/充值</th>
+<th>金额</th>
 <th>日期</th>
-<th>详情</th>
-<th>消费</th>
-
 </tr>
 </thead>
 <s:iterator value="purchaseList" id="pur">
        <tbody>
        <tr>
-<td><s:property value="pur.userid"/></td>
+
 <td>${bill.billName}</td>
-<td>${user}</td>
-<td>${om}</td>
+
 <td>${purchaseType} </td>
 <td>${purchaseMoney}</td>
 <td>${purchaseCreatetime} </td>
-<td>${deleteflag}</td>
-<td>${billObject}</td>
+
 
 </tr>
 

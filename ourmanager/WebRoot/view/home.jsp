@@ -109,56 +109,32 @@
 						</div>
 					</div>
 					<div class="divider2"></div>
-					<li><a href="index.html"> <i aria-hidden="true"
-							class="fa fa-laptop"></i><span>Dashboard</span>
-					</a></li>
-					<li><a href="page-inbox.html"> <span
-							class="pull-right label label-primary">165</span> <i
-							aria-hidden="true" class="fa fa-envelope"></i><span>Mail</span>
-					</a></li>
-					<li class="nav-parent" id="nav-parent1"><a> <i
-							aria-hidden="true" class="fa fa-copy"></i><span>hehetton>
+							<li class="nav-parent" id="nav-parent1"><a> 
+				<i aria-hidden="true" class="fa fa-copy"></i><span>关于个人信息
 						</span>
 
 
 
 					</a>
 						<ul class="nav nav-children">
-							<li><a href="page-activity.html"><span class="text">
-										Activity</span></a></li>
-							<li><a href="page-invoice.html"><span class="text">
-										Invoice</span></a></li>
-							<li><a href="page-profile.html"><span class="text">
-										Profile</span></a></li>
-							<li><a href="page-pricing-tables.html"><span
-									class="text"> Pricing Tables</span></a></li>
-							<li><a href="page-404.html"><span class="text">
-										404</span></a></li>
-							<li><a href="page-500.html"><span class="text">
-										500</span></a></li>
-							<li><a href="page-lockscreen.html"><span class="text">
-										LockScreen1</span></a></li>
-							<li><a href="page-lockscreen2.html"><span class="text">
-										LockScreen2</span></a></li>
-							<li><a href="page-login.html"><span class="text">
-										Login Page</span></a></li>
-							<li><a href="page-register.html"><span class="text">
-										Register Page</span></a></li>
+								<li><a href="/ourmanager/view/checkfile.jsp"><span class="text">
+									个人信息查看</span></a></li>
+							<li><a href="/ourmanager/view/profile.jsp"><span class="text">
+									个人信息修改</span></a></li>
+						<li><a href="/ourmanager/loadPurchase"><span class="text">
+									个人消费记录</span></a></li>
 						</ul></li>
 					<li class="nav-parent  " id="nav-parent2"><a> <i
-							aria-hidden="true" class="fa fa-list-alt"></i><span>page </span>
-					</a>
+						aria-hidden="true" class="fa fa-list-alt"></i><span>关于集体信息 </span>
+  					</a>
+				
 						<ul class="nav nav-children" style="">
-							<li><a href="form-elements.html"><span class="text">
-										Form elements</span></a></li>
-							<li><a href="form-wizard.html"><span class="text">
-										Wizard</span></a></li>
-							<li><a href="form-dropzone.html"><span class="text">
-										Dropzone Upload</span></a></li>
-							<li><a href="form-x-editable.html"><span class="text">
-										X-editable</span></a></li>
-							<li class="active opened"><a href="form-editors.html"><span
-									class="text"> Editors</span></a></li>
+								<li><a href="/ourmanager/view/omCheckfile.jsp"><span class="text">
+									集体信息查看</span></a></li>
+							<li><a href="/ourmanager/view/omProfile.jsp"><span class="text">
+									集体信息修改</span></a></li>
+					<li><a href="/ourmanager/LoadMembers"><span class="text">
+									成员通讯录</span></a></li>
 						</ul></li>
 					<li><a href="table.html"> <i aria-hidden="true"
 							class="fa fa-table"></i><span>Tables</span>

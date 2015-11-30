@@ -108,71 +108,74 @@ footer {
 </div>
    </div>
     <div class="row">
-    <div class="col-md-12">
-					<div class="col-md-1"></div>
-     <div class="col-md-10">
+    <div class="col-md-10">
+					<div class="col-md-3"></div>
+     <div class="col-md-8">
      <div class="panel" >
        
 <div class="panel-body" >
 <form class="form-horizontal " enctype="multipart/form-data" method="post" action="">
+	
+					  <hr />
+					 
 						<div class="form-group">
-							<label class="col-md-3 control-label">集体名</label>
-							<div class="col-md-9">
+							<label class="col-md-4 control-label"style="font-size:15px;">集体名</label>
+							<div class="col-md-6">
 							<s:property  value="%{#session.user.om.omName}"/> 
-							<br>
+							
 						
 							</div>
 						</div>
-					   <br>
-					       	<br>
+						  <br>
+					  <hr />
 					 
 					      <div class="form-group">
-							<label class="col-md-3 control-label">集体描述</label>
-							<div class="col-md-9">
+							<label class="col-md-4 control-label"style="font-size:15px;">集体描述</label>
+							<div class="col-md-6">
 							<s:property value="%{#session.user.om.omDes}"/> 
-							<br>
+							
 							</div>
 						</div>
-					   <br>
-					       	<br>
+						  <br>
+					  <hr />
 					      <div class="form-group">
-							<label class="col-md-3 control-label">集体地址</label>
-							<div class="col-md-9">
+							<label class="col-md-4 control-label"style="font-size:15px;">集体地址</label>
+							<div class="col-md-6">
 							<s:property  value="%{#session.user.om.omLocation}"/> 
-							<br>
+						
 							</div>
 						</div>
-					   <br>
-					       	<br>
+						  <br>
+					  <hr />
 						<div class="form-group">
-							<label class="col-md-3 control-label">集体余额</label>
-							<div class="col-md-9">
+							<label class="col-md-4 control-label"style="font-size:15px;">集体余额</label>
+							<div class="col-md-6">
 								<s:property value="%{#session.user.om.omMoney}"/> 
-								<br>
+								
 							</div>
 						</div>
-						<br>
-						    	<br>
+						  <br>
+					<hr />
 						<div class="form-group">
-							<label class="col-md-3 control-label" >资金账户</label>
-							<div class="col-md-9">
+							<label class="col-md-4 control-label"style="font-size:15px;" >资金账户</label>
+							<div class="col-md-6">
 							<s:property value="%{#session.user.om.omBank}"/> 
-                        	<br>
+                        
                         </div>
                         </div>
-                        	<br>
-                        	<br>
+                        <br>
+                        <hr />
 						<div class="form-group">
-							<label class="col-md-3 control-label" >集体人数</label>
-							<div class="col-md-9">
+							<label class="col-md-4 control-label"style="font-size:15px;" >集体人数</label>
+							<div class="col-md-6">
 					      <s:property  value="%{#session.user.om.headcount}"/> 
 								
-								<br>
+							
 							</div>
 						</div>
-							<br>
-										
-				
+							
+				   <br>
+                        <hr />
 					
 				</form>
 				</div>

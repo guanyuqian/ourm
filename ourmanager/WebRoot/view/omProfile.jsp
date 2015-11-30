@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
@@ -11,6 +11,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+
+
 <base href="<%=basePath%>">
 
 <!-- Mobile Metas -->
@@ -55,22 +57,6 @@
 <!-- Theme CSS -->
 <link href="assets/css/jquery.mmenu.css" rel="stylesheet" />
 
-<!-- Vendor CSS-->
-<link href="assets/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet" />
-<link href="assets/vendor/skycons/css/skycons.css" rel="stylesheet" />
-<link href="assets/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" />
-
-<!-- Plugins CSS-->
-
-<!-- Theme CSS -->
-<link href="assets/css/jquery.mmenu.css" rel="stylesheet" />
-
-<!-- Page CSS -->
-<link href="assets/css/style.css" rel="stylesheet" />
-<link href="assets/css/add-ons.min.css" rel="stylesheet" />
-
 <!-- Page CSS -->
 <link href="assets/css/style.css" rel="stylesheet" />
 <link href="assets/css/add-ons.min.css" rel="stylesheet" />
@@ -87,17 +73,34 @@ footer {
 <!-- Head Libs -->
 <script src="assets/plugins/modernizr/js/modernizr.js"></script>
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
 
 
 
 
 
+
+
+<title>My JSP starting page</title>
+<script src="assets/js/jquery-1.7.1.js"></script>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jquery.inputmask.js" type="text/javascript"></script>
+<script src="assets/js/jsAddress.js" type="text/javascript"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+addressInit('s1', 's2', 's3',
+					'${user.om.omProvince}', '${user.om.omCity}',
+					'${user.om.omCounty}');
+
+
+	$("#save").click(function() {
+		if ($("#omname").val() == "") {
+				alert("集体名不能为空！");
+			return false;
+		}
+		
+	});
+	});
+</script>
 
 
 <meta http-equiv="pragma" content="no-cache">
@@ -108,11 +111,13 @@ footer {
 
 </head>
 
-<body onload="setup();">
-  <jsp:include page="home.jsp"></jsp:include>
+<body>
+	<jsp:include page="home.jsp"></jsp:include>
 	<s:form id="form" action="Update" method="post">
-		
-		<div class="row">
+
+
+
+		<div class="row" id="1">
 			<div class="main " style="min-height: 767px;">
 				<div class="page-header">
 					<div class="pull-right">
@@ -120,17 +125,16 @@ footer {
 					</div>
 				</div>
 				<div class="row">
-				<div class="col-md-12">
-					<div class="col-md-1"></div>
 					<div class="col-md-10">
+					<div class="col-md-3"></div>
+					<div class="col-md-8">
 						<div class="panel">
 
-							<div class="panel-body"
-								>
+							<div class="panel-body">
 								<form class="form-horizontal " enctype="multipart/form-data"
 									method="post" action="">
-  	                  <div class="form-group">
-							<label class="col-md-3 control-label" for="omname-input">集体名</label>
+								  <div class="form-group">
+							<label class="col-md-3 control-label"style="font-size:16px;"><span class="required">*</span>集体名</label>
 							<div class="col-md-9">
 									<s:textfield name="user.om.omName" value="%{#session.user.om.omName}"cssClass="form-control"></s:textfield>
 							</div>
@@ -139,7 +143,7 @@ footer {
 						</div>
 							
 	                           <div class="form-group">
-							<label class="col-md-3 control-label" for="omdes-input">集体描述</label>
+							<label class="col-md-3 control-label" style="font-size:16px;">集体描述</label>
 							<div class="col-md-9">
 									<s:textarea name="user.om.omDes" value="%{#session.user.om.omDes}"cssClass="form-control"></s:textarea>
 							</div>
@@ -150,100 +154,70 @@ footer {
 						<br>
 							<br>
 									<div class="form-group">
-									<label class="col-md-3 control-label" for="omdes-input">所属地区</label>
-										<div class="col-md-3">
-											<select class="select form-control" name="om.omProvince" id="s1">
-												<option>请选择省</option>
-											</select>
-										</div>
-										<div class="col-md-3">
-											<select class="select form-control" name="om.omCity" id="s2">
-												<option>请选择市</option>
-											</select>
-										</div>
-										<div class="col-md-3">
-											<select class="z form-control" name="om.omTown" id="s3"
-												onchange="getTown()">
-												<option>请选择区县</option>
-											</select>
-										</div>
-											<br>
-							<br>
-							      </div>
+									<input type="hidden" name="user.userHometown" id="UH"/>
+										<label class="col-md-3 control-label"style="font-size:16px;" >所属地区</label>
+									
+										<div class="col-md-9">
+
+										<select id="s1"  class="col-md-3" name="omProvince">
+										</select>&nbsp;&nbsp; 
+											<select id="s2" 
+												class="col-md-3" name="omCity">
+											
+  											</select>
+											&nbsp;&nbsp; <span id="seachdistrict_div">
+											 <select
+												id="s3" class="col-md-3" name="omCounty">
+											</select></span>
+											 <br>
+											 <br>
+  										</div>
+  										</div>
 					
 					
 						 <div class="form-group">
-							<label class="col-md-3 control-label" for="omlocation-input">详细地址</label>
+							<label class="col-md-3 control-label" style="font-size:16px;">详细地址</label>
 							<div class="col-md-9">
 									<s:textarea name="user.om.omLocation" value="%{#session.user.om.omLocation}"cssClass="form-control"></s:textarea>
 							</div>
 							<br>
 							<br>
 						</div>
-						
+						                             <div class="form-group">
+
+									<div class="col-md-9">
+										<button id="save"
+											class="btn btn-primary hidden-xs bk-margin-top-10"
+												type="submit">保存</button>
+											<button
+												class="btn btn-primary btn-block btn-lg visible-xs bk-margin-top-10"
+												type="submit" href="index.html">保存</button>
+									</div>
+									</div>
+
 								</form>
 							</div>
-                         </div>
+
 						</div>
+		
+					</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-	</s:form>	
-	<script src="assets/js/jquery.mmenu.min.js"></script>
-	<script src="assets/js/core.min.js"></script>
-	<script src="assets/js/area.js"></script>
-<!-- Vendor JS-->
-	<script src="assets/vendor/js/jquery.min.js"></script>
-	<script src="assets/vendor/js/jquery-2.1.1.min.js"></script>
-	<script src="assets/vendor/js/jquery-migrate-1.2.1.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/vendor/skycons/js/skycons.js"></script>
 
-	<!-- Plugins JS-->
 
-	<!-- Theme JS -->
-	<script src="assets/js/jquery.mmenu.min.js"></script>
-	<script src="assets/js/core.min.js"></script>
-	<script src="assets/js/area.js"></script>
-	<!-- Pages JS -->
-	<script src="assets/js/pages/page-register.js"></script>
-
-	<!-- end: JavaScript-->
-	<script type="text/javascript">
-		//这个函数是必须的，因为在area.js里每次更改地址时会调用此函数  
-		function promptinfo() {
-			var address = document.getElementById('address');
-			var s1 = document.getElementById('s1');
-			var s2 = document.getElementById('s2');
-			var town1 = document.getElementById('town1');
-			if (s1.value != "请选择省" && s2.value == '请选择市') {//若只选择了第一项，则地址就为某某省  
-				address.value = s1.value;
-			}
-			if (s1.value != "请选择省" && s2.value != '请选择市') {//若只选择了前两项省和市，则地址就只显示"省|市"  
-				address.value = s1.value + "|" + s2.value;
-			}
-			if (s1.value == "请选择省") {//若什么都不选，则隐藏域地址为空串  
-				address.value = "";
-			}
-		}
-		//获取区县的值（若不写这个触发函数，一直获取不到第三项区县的值，一直是默认值“请选择区县”）  
-		function getTown() {
-			var address = document.getElementById('address');
-			var s1 = document.getElementById('s1').value
-			var s2 = document.getElementById('s2').value;
-			var s3 = document.getElementById('s3').value;
-			var town1 = document.getElementById('town1').value;
-			town1 = s3;
-			if (town1 == "请选择区县") {
-				address.value = s1 + "|" + s2;
-			} else {
-				address.value = s1 + "|" + s2 + "|" + town1;
-			}
-
-		}
+	</s:form>
+	<script
+		src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js">
+		<script src="assets/js/jquery-1.7.1.js" type="text/javascript">
 	</script>
+	<script src="assets/js/pages/Area.js" type="text/javascript"></script>
+	<script src="assets/js/pages/AreaData_min.js" type="text/javascript"></script>
+	<script src="assets/js/pages/Area1.js" type="text/javascript"></script>
+	<script src="assets/js/pages/AreaData_min1.js" type="text/javascript"></script>
 
-<body/>
+
+</body>
 </html>
+

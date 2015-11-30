@@ -79,7 +79,6 @@ footer {
 
 
 
-
 <title>My JSP starting page</title>
 <script src="assets/js/jquery-1.7.1.js"></script>
 <script src="jquery.js" type="text/javascript"></script>
@@ -132,16 +131,16 @@ footer {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-					<div class="col-md-1"></div>
 					<div class="col-md-10">
+					<div class="col-md-3"></div>
+					<div class="col-md-8">
 						<div class="panel">
 
 							<div class="panel-body">
 								<form class="form-horizontal " enctype="multipart/form-data"
 									method="post" action="">
 									<div class="form-group">
-										<label class="col-md-3 control-label">昵称</label>
+										<label class="col-md-3 control-label" style="font-size:16px;"><span class="required">*</span>昵称</label>
 										<div class="col-md-9">
 											<td><s:textfield name="user.userName"
 													value="%{#session.user.userName}" id="userName"
@@ -153,7 +152,7 @@ footer {
 									<br>
 
 									<div class="form-group">
-										<label class="col-md-3 control-label" for="email-input">邮箱</label>
+										<label class="col-md-3 control-label" style="font-size:16px;">邮箱</label>
 										<div class="col-md-9">
 											<td><s:textfield name="user.userEmail"
 													value="%{#session.user.userEmail}" id="userEmail"
@@ -162,7 +161,7 @@ footer {
 									</div>
 									<br>
 									<div class="form-group">
-										<label class="col-md-3 control-label" for="email-input">手机号</label>
+										<label class="col-md-3 control-label" style="font-size:16px;">手机号</label>
 										<div class="col-md-9">
 											<td><s:textfield name="user.userNumber"
 													value="%{#session.user.userNumber}" id="userNumber"
@@ -171,7 +170,7 @@ footer {
 									</div>
 									<br>
 									<div class="form-group">
-										<label class="col-md-3 control-label" for="sex-input">性别</label>
+										<label class="col-md-3 control-label" style="font-size:16px;"><span class="required">*</span>性别</label>
 										<div class="col-md-9">
 										
 											<s:select name="user.userSex" id="userSex" value="%{#session.user.userSex}"
@@ -182,7 +181,7 @@ footer {
 									</div>
 									<br>
 									<div class="form-group">
-										<label class="col-md-3 control-label" for="moto-input">签名档</label>
+										<label class="col-md-3 control-label" style="font-size:16px;">签名档</label>
 										<div class="col-md-9">
 											<s:textarea name="user.userMoto"
 													value="%{#session.user.userMoto}" cssClass="form-control"></s:textarea>
@@ -193,7 +192,7 @@ footer {
 									<div class="form-group">
 									
 									<input type="hidden" name="user.userHometown" id="UH"/>
-										<label class="col-md-3 control-label" for="hometown-input">故乡</label>
+										<label class="col-md-3 control-label" style="font-size:16px;">故乡</label>
 										<div class="col-md-9">
 
 											<select id="cmbP"  class="col-md-3" name="user.userHomeProvince">
@@ -213,7 +212,7 @@ footer {
 									
 									<div class="form-group">
 									<input type="hidden" name="user.userLocation" id="UH1"/>
-										<label class="col-md-3 control-label" for="location-input">现居地</label>
+										<label class="col-md-3 control-label" style="font-size:16px;">现居地</label>
 										<div class="col-md-9">
 
 											<select id="cmbP1" name="user.userProvince" class="col-md-3">
@@ -228,7 +227,7 @@ footer {
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-md-3 control-label" for="job-input">工作</label>
+										<label class="col-md-3 control-label" style="font-size:16px;">工作</label>
 										<div class="col-md-9">
 											<s:textfield name="user.userJob"
 													value="%{#session.user.userJob}" cssClass="form-control"></s:textfield>
@@ -237,7 +236,7 @@ footer {
 									</div>
 									<br>
 									<div class="form-group">
-										<label class="col-md-3 control-label" for="birthday-input">生日</label>
+										<label class="col-md-3 control-label" style="font-size:16px;">生日</label>
 										<div class="col-md-9">
 
 											<div class="input-group">
