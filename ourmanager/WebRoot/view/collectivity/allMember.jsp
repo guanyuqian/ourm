@@ -26,21 +26,6 @@
 <link rel="shortcut icon" href="assets/ico/favicon.ico"
 	type="image/x-icon" />
 <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="57x57"
-	href="assets/ico/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="72x72"
-	href="assets/ico/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="76x76"
-	href="assets/ico/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon" sizes="114x114"
-	href="assets/ico/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="120x120"
-	href="assets/ico/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon" sizes="144x144"
-	href="assets/ico/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon" sizes="152x152"
-	href="assets/ico/apple-touch-icon-152x152.png" />
-
 <!-- start: CSS file-->
 
 <!-- Vendor CSS-->
@@ -61,13 +46,6 @@
 <link href="assets/vendor/skycons/css/skycons.css" rel="stylesheet" />
 <link href="assets/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" />
-
-<!-- Plugins CSS-->
-
-<!-- Theme CSS -->
-<link href="assets/css/jquery.mmenu.css" rel="stylesheet" />
-
-<!-- Page CSS -->
 <link href="assets/css/style.css" rel="stylesheet" />
 <link href="assets/css/add-ons.min.css" rel="stylesheet" />
 
@@ -80,45 +58,41 @@ footer {
 	display: none;
 }
 </style>
-
-<!-- end: CSS file-->
-
-
-<!-- Head Libs -->
 <script src="assets/plugins/modernizr/js/modernizr.js"></script>
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-
-
-
-
-
-
-
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <title>My JSP starting page</title>
-<script src="assets/js/jquery-1.7.1.js"></script>
-<script src="jquery.js" type="text/javascript"></script>
-<script src="jquery.inputmask.js" type="text/javascript"></script>
+ <link rel="stylesheet" type="text/css" href="assets/css/fenye.css"
+	media="screen" /> 
+<script src="assets/js/jquery-1.3.2.js"></script>
+<script src="assets/js/jquery.paginate.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		//初始化加载第一页
-		var LP=5;
-		console.log();
 		func(1);
 	});
-</script>
-<script type="text/javascript">
+	$(function() {
+		//初始化加载第一页
+		$("#demo5").paginate({
+			count : ${LAGE_PAGE},
+			start : 1,
+			display : 10,
+			border : false,
+			text_color : '#888',
+			background_color : '#EEE',
+			text_hover_color : 'black',
+			background_hover_color : '#CFCFCF',
+			images : false,
+			mouse : 'press',
+			onChange : function(page) {
+				func(page);
+			}
+		});
+	});
 	function func(i) {
+		$("#table").empty();
 		//提交的参数，name和inch是和struts action中对应的接收变量
 		var params = {
 			page : i
@@ -132,7 +106,7 @@ footer {
 					success : function(data) {
 						console.log(data);
 						var users = data.users;
-						$("#table").empty();
+
 						$
 								.each(
 										users,
@@ -177,7 +151,7 @@ footer {
 											//                       查看详情
 											// </button></td> -->
 										});
-										
+
 					},
 					error : function(json) {
 						alert("json=" + json);
@@ -200,59 +174,42 @@ footer {
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="panel"
 						style="width: 870px; padding-left: 100px; border-left-width: 0px; margin-left: 130px; padding-top: 50px;">
 
 
 						<div class="panel-body"
 							style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
-
-							<div class="table-responsive">
-								<table class="table" >
-									<thead>
-										<tr>
-
-											<th>账号</th>
-											<th>昵称</th>
-											<th>性别</th>
-											<th>邮箱</th>
-											<th>电话</th>
-											<th>余额</th>
-											<th>权限</th>
-
-
-										</tr>
-									</thead>
-
-
-
-
-									<tbody id="table">
-
-									</tbody>
-
-								</table>
-
-
-								<div class="btn-toolbar" role="toolbar" id="tollbar">
-									<div class="bk-margin-5 btn-group">
-										<button class="btn btn-default" type="button" id="1"
-											onClick="func(1)">最前页</button> 
-										<c:forEach var="i" begin="1" end="${LAGE_PAGE}" step="1">
-											<button class="btn btn-default" type="button" id=i
-												onClick="func(${i})">${i}</button>
-										</c:forEach>
-										<button class="btn btn-default" type="button" id="${LAGE_PAGE}"
-											onClick="func(${LAGE_PAGE})">最后页</button>
-									</div>
+							<div id="paginationdemo" class="demo">
+								<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>账号</th>
+												<th>昵称</th>
+												<th>性别</th>
+												<th>邮箱</th>
+												<th>电话</th>
+												<th>余额</th>
+												<th>权限</th>
+											</tr>
+										</thead>
+										<tbody id="table">
+										</tbody>
+									</table>
 								</div>
+
 							</div>
 						</div>
+						<div id="demo5"></div>
+
 					</div>
 				</div>
 			</div>
+
 		</div>
+
 	</s:form>
 </body>
 </html>

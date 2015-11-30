@@ -64,7 +64,7 @@
 
 <!-- Head Libs -->
 <script src="assets/plugins/modernizr/js/modernizr.js"></script>
-<script src="assets/vendor/js/jquery-2.1.1.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		for (var i = 1; i <= 5; i++) {
