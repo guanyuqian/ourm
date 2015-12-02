@@ -27,6 +27,21 @@ public class Bill implements java.io.Serializable {
 	private Set purchases = new HashSet(0);
 
 	// Constructors
+	public Bill(Bill bill) {
+		this.billid = bill.billid;
+		this.userByCreaterUserid=bill.userByCreaterUserid;
+		this.userByCheckerUserid=bill.userByCheckerUserid;
+		this.om=bill.om;
+		this.billName=bill.billName;
+		this.billMoney=bill.billMoney;
+		this.billType=bill.billType;
+		this.billCreatetime=bill.billCreatetime;
+		this.billStatus=bill.billStatus;
+		this.billObject=bill.billObject;
+		this.deleteflag=bill.deleteflag;
+		this.billDes=bill.billDes;
+		this.purchases=bill.purchases;
+	}
 
 	/** default constructor */
 	public Bill() {

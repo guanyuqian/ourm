@@ -53,9 +53,9 @@
 		<action name="updateOM" class="OmUpdateAction" method="updateOM">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
-		<action name="createBill" class="BillCreateAction" method="createBill">
+ 		<action name="createBill" class="BillCreateAction" method="createBill">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
+		</action> 
 		<action name="jsonAjax" class="com.zxt.JsonAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<!-- 将返回类型设置为json -->

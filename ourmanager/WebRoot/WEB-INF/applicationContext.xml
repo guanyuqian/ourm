@@ -97,12 +97,12 @@
 	<bean id="PurchaseAction" class="com.om.action.PurchaseAction">
 		<property name="purchaseService" ref="PurcahseService"></property>
 	</bean>
-	<bean id="BillCreateService" class="com.om.service.impl.BillService">
+ 	<bean id="BillCreateService" class="com.om.service.impl.BillService">
 	<property name="billdao" ref="BillDAO"></property>
 	<property name="purchasedao" ref="PurchaseDAO"></property>
 	<property name="userdao" ref="UserDAO"></property>
 	</bean>
 	<bean id="BillCreateAction" class="com.om.action.BillAction">
 	<property name="billservice" ref="BillCreateService"></property>
-	</bean>
+	</bean> 
 </beans>
