@@ -111,6 +111,15 @@ footer {
 								.each(
 										users,
 										function(i, item) {
+										    var name = "---";
+											if (item.userName != null)
+												name = item.userName;
+											var sex = "---";
+											if (item.userName != null)
+												sex = item.userSex;
+											var email = "---";
+											if (item.userEmail != null)
+												email = item.userEmail;
 											var limit = "未命名";
 											if (item.userLimit == 0)
 												limit = "超级管理员";
@@ -122,18 +131,18 @@ footer {
 												limit = "成员";
 											console.log(item.userid + ","
 													+ item.userName);
-											var html = "<tr  onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
+											var html = "<tr onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
 													+ "<td>"
 													+ item.userid
 													+ "</td>"
 													+ "<td>"
-													+ item.userName
+													+ name
 													+ "</td>"
 													+ "<td>"
-													+ item.userSex
+													+ sex
 													+ "</td>"
 													+ "<td>"
-													+ item.userEmail
+													+ email
 													+ "</td>"
 													+ "<td>"
 													+ item.userNumber
@@ -199,11 +208,29 @@ footer {
 										</tbody>
 									</table>
 								</div>
+								
+<div class="col-lg-12">
 
+						<div class="col-lg-6">
+						
+						<div id="demo5" ></div>
+						</div>
+						<div class="col-lg-6">
+                                  	&nbsp;&nbsp;&nbsp;
+                   
+											<s:textfield id="pj" cssClass="btn btn-default"
+												cssStyle="width:50px;height:30px"></s:textfield>
+
+											<button class="btn btn-primary" style="width:60px;height:30px"
+												onclick="func(document.getElementById('pj').value)"
+										type="button">跳转</button>
+										</div>
+										</div>
 							</div>
 						</div>
-						<div id="demo5"></div>
-
+						
+									
+					
 					</div>
 				</div>
 			</div>
