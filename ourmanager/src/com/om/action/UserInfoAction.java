@@ -87,6 +87,7 @@ public class UserInfoAction extends ActionSupport {
 	static final public int ONE_PAGE_NUM = 12;
 
 	public int LAGE_PAGE = 1;
+	
 	public int getLAGE_PAGE() {
 		ServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ((HttpServletRequest) request).getSession();
@@ -148,6 +149,7 @@ public class UserInfoAction extends ActionSupport {
 			//us.put("userNum", u.userNum());
 			Users.add(us);
 		}
+		System.out.println("PAGE_LAST:"+list );
 		return SUCCESS;
 	}
 

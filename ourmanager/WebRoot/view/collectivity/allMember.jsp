@@ -65,13 +65,22 @@ footer {
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <title>My JSP starting page</title>
- <link rel="stylesheet" type="text/css" href="assets/css/fenye.css"
-	media="screen" /> 
+<link rel="stylesheet" type="text/css" href="assets/css/fenye.css"
+	media="screen" />
 <script src="assets/js/jquery-1.3.2.js"></script>
 <script src="assets/js/jquery.paginate.js" type="text/javascript"></script>
 <script type="text/javascript">
+	function func2(userid) {
+		alert(userid);
+		$("#pfp").val(userid);
+		$("#pf").submit();
+	}
 	$(document).ready(function() {
 		func(1);
+		$(".test").click(function() {
+			alert("dfasdf");
+			this.submit();
+		});
 	});
 	$(function() {
 		//初始化加载第一页
@@ -91,6 +100,8 @@ footer {
 			}
 		});
 	});
+
+
 	function func(i) {
 		$("#table").empty();
 		//提交的参数，name和inch是和struts action中对应的接收变量
@@ -111,6 +122,15 @@ footer {
 								.each(
 										users,
 										function(i, item) {
+											var name = "---";
+											if (item.userName != null)
+												name = item.userName;
+											var sex = "---";
+											if (item.userName != null)
+												sex = item.userSex;
+											var email = "---";
+											if (item.userEmail != null)
+												email = item.userEmail;
 											var limit = "未命名";
 											if (item.userLimit == 0)
 												limit = "超级管理员";
@@ -122,18 +142,18 @@ footer {
 												limit = "成员";
 											console.log(item.userid + ","
 													+ item.userName);
-											var html = "<tr  onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
+											var html = "<tr  ondblclick=\"func2("+item.userid+")\" onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
 													+ "<td>"
 													+ item.userid
 													+ "</td>"
 													+ "<td>"
-													+ item.userName
+													+ name
 													+ "</td>"
 													+ "<td>"
-													+ item.userSex
+													+ sex
 													+ "</td>"
 													+ "<td>"
-													+ item.userEmail
+													+ email
 													+ "</td>"
 													+ "<td>"
 													+ item.userNumber
@@ -165,7 +185,7 @@ footer {
 
 <body>
 	<jsp:include page="/view/home.jsp"></jsp:include>
-	<s:form id="billMoney" action="Update" method="post">
+	<s:form id="pf" action="LookUserDetail" method="post">
 		<div class="main sidebar-minified" style="min-height: 767px;">
 			<div class="page-header">
 
@@ -183,6 +203,8 @@ footer {
 							style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
 							<div id="paginationdemo" class="demo">
 								<div class="table-responsive">
+									<input type="hidden" id="pfp" name="LookUserid" />
+									<br />
 									<table class="table">
 										<thead>
 											<tr>
@@ -200,16 +222,35 @@ footer {
 									</table>
 								</div>
 
+								<div class="col-lg-12">
+
+									<div class="col-lg-6">
+
+										<div id="demo5"></div>
+									</div>
+									<div class="col-lg-6">
+										&nbsp;&nbsp;&nbsp;
+
+										<s:textfield id="pj" cssClass="btn btn-default"
+											cssStyle="width:50px;height:30px"></s:textfield>
+
+										<button class="btn btn-primary" style="width:60px;height:30px"
+											onclick="func(document.getElementById('pj').value)"
+											type="button">跳转</button>
+											<button type="submit" >sfs</button>
+											
+									</div>
+								</div>
 							</div>
 						</div>
-						<div id="demo5"></div>
+
+
 
 					</div>
 				</div>
 			</div>
 
 		</div>
-
 	</s:form>
 </body>
 </html>
