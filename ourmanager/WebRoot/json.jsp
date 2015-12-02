@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -22,41 +23,14 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <script src="assets/js/jquery-1.7.1.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#tj").click(function() {
-			//提交的参数，name和inch是和struts action中对应的接收变量
-			var params = {
-				name : $("#xm").val(),
-				inch : $("#sg").val()
-			};
-			$.ajax({
-				type : "POST",
-				url : "jsonAjax",
-				data : params,
-				dataType : 'json', //ajax返回值设置为text（json格式也可用它返回，可打印出结果，也可设置成json）
-				success : function(data) {
-					console.log(data);//可在前台观看返回结果
-					//var obj = $.parseJSON(data); //当使用dataType : 'text'时，使用这个方法解析json
-					var state_value = data.result; //result是和action中定义的result变量的get方法对应的
-					alert(state_value);
-				},
-				error : function(json) {
-					alert("json=" + json);
-					return false;
-				}
-			});
-		});
-	});
-</script>
+
 </head>
 <body>
-	<span>姓名：</span>
-	<input id="xm" type="text">
-	<br />
-	<span>身高：</span>
-	<input id="sg" type="text">
-	<br />
-	<input type="button" value="提交" id="tj">
+	<s:form action="LookUserDetail" method="post">
+		Userid
+		<input id="xm" type="text" name="LookUserid">
+		<button id="save" 
+			type="submit">保存</button>
+	</s:form>
 </body>
 </html>

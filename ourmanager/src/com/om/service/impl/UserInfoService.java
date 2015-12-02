@@ -28,6 +28,14 @@ public class UserInfoService implements IUserInfoService {
 		this.userdao = userdao;
 	}
 
+	public User findUserDetail(int userid){//找到user返回true
+		try{
+			return userdao.findById(userid);
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 	@Override
 	public boolean Update(User user) {
 		ServletRequest request = ServletActionContext.getRequest();

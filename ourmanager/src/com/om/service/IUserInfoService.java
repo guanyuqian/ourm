@@ -11,4 +11,5 @@ public interface IUserInfoService {
 	public boolean Update(User user);
 	public List<User> LoardSomeUser(int page,int omid);
 	public int AllUserCount(int omid);
+	public User findUserDetail(int userid);
 }

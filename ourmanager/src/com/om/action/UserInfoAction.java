@@ -27,7 +27,9 @@ public class UserInfoAction extends ActionSupport {
 	private IUserInfoService userInfoService;
 	private User user;
 	public List Users=new ArrayList();
-
+	
+	public int LookUserid;//查看个人信息传入的id
+	public User LookUser;//查看个人信息返回的user
 	@JSON(serialize = false)
 	public IUserInfoService getUserInfoService() {
 		return userInfoService;
@@ -44,6 +46,34 @@ public class UserInfoAction extends ActionSupport {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public int getLookUserid() {
+		return LookUserid;
+	}
+
+	public void setLookUserid(int lookUserid) {
+		LookUserid = lookUserid;
+	}
+
+	public User getLookUser() {
+		return LookUser;
+	}
+
+	public void setLookUser(User lookUser) {
+		LookUser = lookUser;
+	}
+
+	public static int getOnePageNum() {
+		return ONE_PAGE_NUM;
+	}
+
+	public void setUsers(List users) {
+		Users = users;
+	}
+
+	public void setLAGE_PAGE(int lAGE_PAGE) {
+		LAGE_PAGE = lAGE_PAGE;
 	}
 
 	public String Update() {
@@ -84,6 +114,13 @@ public class UserInfoAction extends ActionSupport {
 	}
 	private int page;
 
+	public String LoadUserDetail(){
+		LookUser =userInfoService.findUserDetail(LookUserid);
+		if(LookUser!=null)
+			return SUCCESS;
+		else 
+			return ERROR;
+	}
 	public String loadMembers() throws IOException {
 		//list = new ArrayList();
 		System.out.println("in loadmembers");

@@ -41,14 +41,15 @@
 			method="loadMembers">
 			<result name="success" type="json"></result>
 		</action>
-		<action name="LoadMembers" class="UserInfoUpdateAction"
-			method="MembersCount">
+		<action name="LoadMembers" class="UserInfoUpdateAction" method="MembersCount">
 			<result name="success">view/collectivity/allMember.jsp</result>
 		</action>
 		<action name="loadPurchase" class="PurchaseAction" method="loadPur">
 			<result name="success">view/personal/purchase.jsp</result>
 		</action>
-
+		<action name="LookUserDetail" class="UserInfoUpdateAction" method="LoadUserDetail">
+			<result name="success">view/personal/UserDetail.jsp</result>
+		</action>
 		<action name="updateOM" class="OmUpdateAction" method="updateOM">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
