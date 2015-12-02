@@ -122,7 +122,11 @@ footer {
 								.each(
 										users,
 										function(i, item) {
+<<<<<<< HEAD
 											var name = "---";
+=======
+										    var name = "---";
+>>>>>>> 1bceaa35b4f05e7c649410f9686c2abed1d70659
 											if (item.userName != null)
 												name = item.userName;
 											var sex = "---";
@@ -142,7 +146,11 @@ footer {
 												limit = "成员";
 											console.log(item.userid + ","
 													+ item.userName);
+<<<<<<< HEAD
 											var html = "<tr  ondblclick=\"func2("+item.userid+")\" onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
+=======
+											var html = "<tr onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
+>>>>>>> 1bceaa35b4f05e7c649410f9686c2abed1d70659
 													+ "<td>"
 													+ item.userid
 													+ "</td>"
@@ -221,7 +229,10 @@ footer {
 										</tbody>
 									</table>
 								</div>
+								
+<div class="col-lg-12">
 
+<<<<<<< HEAD
 								<div class="col-lg-12">
 
 									<div class="col-lg-6">
@@ -246,6 +257,28 @@ footer {
 
 
 
+=======
+						<div class="col-lg-6">
+						
+						<div id="demo5" ></div>
+						</div>
+						<div class="col-lg-6">
+                                  	&nbsp;&nbsp;&nbsp;
+                   
+											<s:textfield id="pj" cssClass="btn btn-default"
+												cssStyle="width:50px;height:30px"></s:textfield>
+
+											<button class="btn btn-primary" style="width:60px;height:30px"
+												onclick="func(document.getElementById('pj').value)"
+										type="button">跳转</button>
+										</div>
+										</div>
+							</div>
+						</div>
+						
+									
+					
+>>>>>>> 1bceaa35b4f05e7c649410f9686c2abed1d70659
 					</div>
 				</div>
 			</div>
