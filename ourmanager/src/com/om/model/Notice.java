@@ -19,7 +19,6 @@ public class Notice implements java.io.Serializable {
 	private Om om;
 	private String noticeDes;
 	private String noticeName;
-	private Date noticeBegintime;
 	private Date noticeEndtime;
 	private Timestamp noticeCreatetime;
 	private String noticePriority;
@@ -30,6 +29,7 @@ public class Notice implements java.io.Serializable {
 	/** default constructor */
 	public Notice() {
 	}
+
 	/** minimal constructor */
 	public Notice(Notice notice) {
 		this.userByNoticeCreater = notice.userByNoticeCreater;
@@ -37,7 +37,7 @@ public class Notice implements java.io.Serializable {
 		this.om = notice.om;
 		this.noticeDes = notice.noticeDes;
 		this.noticeName = notice.noticeName;
-		this.noticeBegintime = notice.noticeBegintime;
+
 		this.noticeEndtime = notice.noticeEndtime;
 		this.noticeCreatetime = notice.noticeCreatetime;
 		this.noticePriority = notice.noticePriority;
@@ -45,12 +45,11 @@ public class Notice implements java.io.Serializable {
 	}
 	/** minimal constructor */
 	public Notice(User userByNoticeCreater, Om om, String noticeName,
-			Date noticeBegintime, Date noticeEndtime,
-			Timestamp noticeCreatetime, String noticePriority) {
+			Date noticeEndtime, Timestamp noticeCreatetime,
+			String noticePriority) {
 		this.userByNoticeCreater = userByNoticeCreater;
 		this.om = om;
 		this.noticeName = noticeName;
-		this.noticeBegintime = noticeBegintime;
 		this.noticeEndtime = noticeEndtime;
 		this.noticeCreatetime = noticeCreatetime;
 		this.noticePriority = noticePriority;
@@ -58,15 +57,14 @@ public class Notice implements java.io.Serializable {
 
 	/** full constructor */
 	public Notice(User userByNoticeCreater, User userByNoticeEditor, Om om,
-			String noticeDes, String noticeName, Date noticeBegintime,
-			Date noticeEndtime, Timestamp noticeCreatetime,
-			String noticePriority, Set userNoticeCollects) {
+			String noticeDes, String noticeName, Date noticeEndtime,
+			Timestamp noticeCreatetime, String noticePriority,
+			Set userNoticeCollects) {
 		this.userByNoticeCreater = userByNoticeCreater;
 		this.userByNoticeEditor = userByNoticeEditor;
 		this.om = om;
 		this.noticeDes = noticeDes;
 		this.noticeName = noticeName;
-		this.noticeBegintime = noticeBegintime;
 		this.noticeEndtime = noticeEndtime;
 		this.noticeCreatetime = noticeCreatetime;
 		this.noticePriority = noticePriority;
@@ -121,14 +119,6 @@ public class Notice implements java.io.Serializable {
 
 	public void setNoticeName(String noticeName) {
 		this.noticeName = noticeName;
-	}
-
-	public Date getNoticeBegintime() {
-		return this.noticeBegintime;
-	}
-
-	public void setNoticeBegintime(Date noticeBegintime) {
-		this.noticeBegintime = noticeBegintime;
 	}
 
 	public Date getNoticeEndtime() {

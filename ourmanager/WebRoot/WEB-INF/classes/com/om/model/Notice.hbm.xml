@@ -33,11 +33,6 @@
                 <comment>公告名称</comment>
             </column>
         </property>
-        <property name="noticeBegintime" type="java.util.Date">
-            <column name="notice_begintime" length="10" not-null="true">
-                <comment>公告开始时间</comment>
-            </column>
-        </property>
         <property name="noticeEndtime" type="java.util.Date">
             <column name="notice_endtime" length="10" not-null="true">
                 <comment>公告结束时间</comment>

@@ -47,8 +47,12 @@ public class NoticeService implements INoticeService {
 
 	@Override
 	public int AllListCount(int omid) {
-		return noticeDao.findByOm(omid).size();
-
+		try{
+		return 	noticeDao.findByOm(omid).size();
+		}catch(Exception e){
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	@Override

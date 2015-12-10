@@ -52,33 +52,42 @@ public class NoticeAction extends ActionSupport {
 		return LAGE_PAGE;
 	}
 
-	public String firstLoadNotice() throws IOException{
+	public String firstLoadNotice() throws IOException {
 		page = 1;
 		getLAGE_PAGE();
 		loadlNotice();
 		return SUCCESS;
 	}
+
 	public String loadlNotice() throws IOException {
 		// list = new ArrayList();
-		
+
 		System.out.println("in loadlNotice");
 		ServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		int omid = ((Om) session.getAttribute("om")).getOmid();
 		List<Notice> list = noticeService.LoardSomeService(1, omid);
+
 		Notices.clear();
-	//	System.out.println("PAGE_LAST:" + getLAGE_PAGE());
+		// System.out.println("PAGE_LAST:" + getLAGE_PAGE());
+		try{
 		for (Notice u : list) {
 			Map us = new HashMap();
 			us.put("Noticeid", u.getNoticeid());
 			us.put("NoticeName", u.getNoticeName());
 			us.put("NoticePriority", u.getNoticePriority());
 			us.put("NoticeDes", u.getNoticeDes());
-			us.put("NoticeBegintime", u.getNoticeBegintime());
 			us.put("NoticeEndtime", u.getNoticeEndtime());
 			us.put("Editor", u.getUserByNoticeEditor());
 			us.put("Creater", u.getUserByNoticeCreater());
 			Notices.add(us);
+		}
+		}catch (Exception e){
+			e.printStackTrace();
+			return SUCCESS;
+	
+
+
 		}
 		return SUCCESS;
 	}
@@ -103,13 +112,12 @@ public class NoticeAction extends ActionSupport {
 		LAGE_PAGE = lAGE_PAGE;
 	}
 
-	
 	public String addNotice() {
 		ServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		User nowuser = ((User) session.getAttribute("user"));
 		Om nowom = ((Om) session.getAttribute("om"));
-		Notice newNotice = new Notice(nowuser, nowom, "NoticeName", new Date(),
+		Notice newNotice = new Notice(nowuser, nowom, "NoticeName",
 				new Date(), null, "高");
 		if (noticeService.addNotice(nowuser, newNotice))
 			return SUCCESS;

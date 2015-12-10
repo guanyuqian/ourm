@@ -152,13 +152,11 @@ public class UserInfoAction extends ActionSupport {
 			us.put("userMoto", u.getUserMoto());
 			us.put("userJob", u.getUserJob());
 			us.put("userBirthday", u.getUserBirthday());
-			
-			us.put("userProvince", u.getUserProvince());
-			us.put("userCounty", u.getUserCounty());
-			us.put("userCity", u.getUserCity());
-			us.put("userHomeProvince", u.getUserHomeProvince());
-			us.put("userHomeCounty", u.getUserHomeCounty());
-			us.put("userHomeCity", u.getUserHomeCity());
+			us.put("userAge", u.getUserAge());
+			us.put("userLocation", u.getUserProvince()+ u.getUserCounty()+u.getUserCity());
+	
+			us.put("userHometown", u.getUserHomeProvince()+u.getUserHomeCounty()+ u.getUserHomeCity());
+
 			us.put("userNumber", u.getUserNumber());
 			Users.add(us);
 		}
