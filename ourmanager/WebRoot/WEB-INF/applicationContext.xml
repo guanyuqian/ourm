@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url"
+			value="jdbc:mysql://55f7d4e50bc29.sh.cdb.myqcloud.com:15623/omdatabase?useUnicode=true&amp;characterEncoding=utf-8">
+		</property>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="username" value="root"></property>
+		<property name="password" value="mysql@323"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/om/model/Log.hbm.xml</value>
+				<value>com/om/model/User.hbm.xml</value>
+				<value>com/om/model/Bill.hbm.xml</value>
+				<value>com/om/model/Purchase.hbm.xml</value>
+				<value>com/om/model/Om.hbm.xml</value>
+				<value>com/om/model/News.hbm.xml</value>
+				<value>com/om/model/UserNoticeCollect.hbm.xml</value>
+				<value>com/om/model/Notice.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="LogDAO" class="com.om.model.LogDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserDAO" class="com.om.model.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="BillDAO" class="com.om.model.BillDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="PurchaseDAO" class="com.om.model.PurchaseDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="OmDAO" class="com.om.model.OmDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="OmBuildService" class="com.om.service.impl.OmService">
+		<property name="omdao" ref="OmDAO"></property>
+		<property name="userdao" ref="UserDAO"></property>
+	</bean>
+	<bean id="OmBuildAction" class="com.om.action.OmAction">
+		<property name="omService" ref="OmBuildService"></property>
+	</bean>
+	<bean id="LoginService" class="com.om.service.impl.LoginService">
+		<property name="userdao" ref="UserDAO"></property>
+	</bean>
+	<bean id="Loginaction" class="com.om.action.LoginAction">
+		<property name="loginService" ref="LoginService"></property>
+	</bean>
+	<bean id="UserInfoUpdateService" class="com.om.service.impl.UserInfoService">
+		<property name="userdao" ref="UserDAO"></property>
+	</bean>
+	<bean id="UserInfoUpdateAction" class="com.om.action.UserInfoAction">
+		<property name="userInfoService" ref="UserInfoUpdateService"></property>
+	</bean>
+	<bean id="OmUpdateService" class="com.om.service.impl.OmService">
+		<property name="omdao" ref="OmDAO"></property>
+		<property name="userdao" ref="UserDAO"></property>
+	</bean>
+	<bean id="OmUpdateAction" class="com.om.action.OmAction">
+		<property name="omService" ref="OmUpdateService"></property>
+	</bean>
+	<bean id="PurcahseService" class="com.om.service.impl.PurcahseService">
+		<property name="pu" ref="PurchaseDAO"></property>
+	</bean>
+	<bean id="PurchaseAction" class="com.om.action.PurchaseAction">
+		<property name="purchaseService" ref="PurcahseService"></property>
+	</bean>
+	<bean id="BillCreateService" class="com.om.service.impl.BillService">
+		<property name="billdao" ref="BillDAO"></property>
+		<property name="purchasedao" ref="PurchaseDAO"></property>
+		<property name="userdao" ref="UserDAO"></property>
+	</bean>
+	<bean id="BillCreateAction" class="com.om.action.BillAction">
+		<property name="billservice" ref="BillCreateService"></property>
+	</bean>
+	<bean id="NewsDAO" class="com.om.model.NewsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserNoticeCollectDAO" class="com.om.model.UserNoticeCollectDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="NoticeDAO" class="com.om.model.NoticeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="noticeService" class="com.om.service.impl.NoticeService">
+		<property name="noticeDao" ref="NoticeDAO"></property>
+		<property name="userDAO" ref="UserDAO"></property>
+	</bean>
+	<bean id="NoticeAction" class="com.om.action.NoticeAction">
+		<property name="noticeService" ref="noticeService"></property>
+	</bean>
+</beans>
