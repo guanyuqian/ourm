@@ -52,36 +52,56 @@ public class NoticeAction extends ActionSupport {
 		return LAGE_PAGE;
 	}
 
+<<<<<<< HEAD
 	public String firstLoadNotice() throws IOException {
+=======
+	public String firstLoadNotice() throws IOException{
+>>>>>>> 168e3245cff571ad43ee86c1fa6dcf215ac3aa52
 		page = 1;
 		getLAGE_PAGE();
 		loadlNotice();
 		return SUCCESS;
 	}
+<<<<<<< HEAD
 
 	public String loadlNotice() throws IOException {
 		// list = new ArrayList();
 
+=======
+	public String loadlNotice() throws IOException {
+		// list = new ArrayList();
+		
+>>>>>>> 168e3245cff571ad43ee86c1fa6dcf215ac3aa52
 		System.out.println("in loadlNotice");
 		ServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		int omid = ((Om) session.getAttribute("om")).getOmid();
 		List<Notice> list = noticeService.LoardSomeService(1, omid);
+<<<<<<< HEAD
 
 		Notices.clear();
 		// System.out.println("PAGE_LAST:" + getLAGE_PAGE());
 		try{
+=======
+		Notices.clear();
+	//	System.out.println("PAGE_LAST:" + getLAGE_PAGE());
+>>>>>>> 168e3245cff571ad43ee86c1fa6dcf215ac3aa52
 		for (Notice u : list) {
 			Map us = new HashMap();
 			us.put("Noticeid", u.getNoticeid());
 			us.put("NoticeName", u.getNoticeName());
 			us.put("NoticePriority", u.getNoticePriority());
 			us.put("NoticeDes", u.getNoticeDes());
+<<<<<<< HEAD
+=======
+			us.put("NoticeBegintime", u.getNoticeBegintime());
+>>>>>>> 168e3245cff571ad43ee86c1fa6dcf215ac3aa52
 			us.put("NoticeEndtime", u.getNoticeEndtime());
 			us.put("Editor", u.getUserByNoticeEditor());
 			us.put("Creater", u.getUserByNoticeCreater());
 			Notices.add(us);
 		}
+<<<<<<< HEAD
 		}catch (Exception e){
 			e.printStackTrace();
 			return SUCCESS;
@@ -89,6 +109,8 @@ public class NoticeAction extends ActionSupport {
 
 
 		}
+=======
+>>>>>>> 168e3245cff571ad43ee86c1fa6dcf215ac3aa52
 		return SUCCESS;
 	}
 
@@ -112,12 +134,20 @@ public class NoticeAction extends ActionSupport {
 		LAGE_PAGE = lAGE_PAGE;
 	}
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 168e3245cff571ad43ee86c1fa6dcf215ac3aa52
 	public String addNotice() {
 		ServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		User nowuser = ((User) session.getAttribute("user"));
 		Om nowom = ((Om) session.getAttribute("om"));
+<<<<<<< HEAD
 		Notice newNotice = new Notice(nowuser, nowom, "NoticeName",
+=======
+		Notice newNotice = new Notice(nowuser, nowom, "NoticeName", new Date(),
+>>>>>>> 168e3245cff571ad43ee86c1fa6dcf215ac3aa52
 				new Date(), null, "高");
 		if (noticeService.addNotice(nowuser, newNotice))
 			return SUCCESS;

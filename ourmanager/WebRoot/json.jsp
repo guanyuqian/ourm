@@ -26,6 +26,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
     <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="100%" height="300" id="FlashZhuan" >  
                 <param name="movie" value="assets/flash/flash3030.swf">  
                 <param name="FlashVars" value="prizeResult=3">  
@@ -35,6 +36,8 @@
                 <param name="allowScriptAccess" value="always" />              
                 <embed src="assets/flash/flash3030.swf" FlashVars="prizeResult=3" allowScriptAccess="always" wmode="transparent" menu="false" quality="high" width="100%" height="100%" type="application/x-shockwave-flash" pluginspage="http://get.adobe.com/cn/flashplayer/" name="FlashZhuan"/>  
         </object>  
+=======
+>>>>>>> 168e3245cff571ad43ee86c1fa6dcf215ac3aa52
 	<s:form action="json1" method="post">
 		Userid
 		<input id="xm" type="text" name="LookUserid">
