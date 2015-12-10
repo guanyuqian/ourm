@@ -92,8 +92,8 @@
 	<div class="sidebar mm-menu mm-horizontal mm-offcanvas">
 		<div class="sidebar-collapse mm-panel mm-opened mm-current" id="mm-0">
 			<!-- Sidebar Header Logo-->
-			<div class="sidebar-header drop-shadow">
-				<img alt="" class="img-responsive" src="assets/img/logo.png">
+			<div >
+				<img alt=""  src="assets/img/logo4.jpg" style="height:62.64">
 			</div>
 			<!-- Sidebar Menu-->
 			<div class="sidebar-menu" style="height: 100%;">

@@ -86,20 +86,19 @@ footer {
 <script src="jquery.inputmask.js" type="text/javascript"></script>
 <script src="assets/js/jsAddress.js" type="text/javascript"></script>
 <script type="text/javascript">
-		$(document).ready(function() {
-addressInit('s1', 's2', 's3',
-					'${user.om.omProvince}', '${user.om.omCity}',
-					'${user.om.omCounty}');
+	$(document).ready(
+			function() {
+				addressInit('s1', 's2', 's3', '${user.om.omProvince}',
+						'${user.om.omCity}', '${user.om.omCounty}');
 
+				$("#save").click(function() {
+					if ($("#omname").val() == "") {
+						alert("集体名不能为空！");
+						return false;
+					}
 
-	$("#save").click(function() {
-		if ($("#omname").val() == "") {
-				alert("集体名不能为空！");
-			return false;
-		}
-		
-	});
-	});
+				});
+			});
 </script>
 
 
@@ -126,81 +125,76 @@ addressInit('s1', 's2', 's3',
 				</div>
 				<div class="row">
 					<div class="col-md-10">
-					<div class="col-md-3"></div>
-					<div class="col-md-8">
-						<div class="panel">
+						<div class="col-md-3"></div>
+						<div class="col-md-8">
+							<div class="panel">
 
-							<div class="panel-body">
-								<form class="form-horizontal " enctype="multipart/form-data"
-									method="post" action="">
-								  <div class="form-group">
-							<label class="col-md-3 control-label"style="font-size:16px;"><span class="required">*</span>集体名</label>
-							<div class="col-md-9">
-									<s:textfield name="user.om.omName" value="%{#session.user.om.omName}"cssClass="form-control"></s:textfield>
-							</div>
-								<br>
-							<br>
-						</div>
-							
-	                           <div class="form-group">
-							<label class="col-md-3 control-label" style="font-size:16px;">集体描述</label>
-							<div class="col-md-9">
-									<s:textarea name="user.om.omDes" value="%{#session.user.om.omDes}"cssClass="form-control"></s:textarea>
-							</div>
-								<br>
-							<br>
-						</div>
-						
-						<br>
-							<br>
-									<div class="form-group">
-									<input type="hidden" name="user.userHometown" id="UH"/>
-										<label class="col-md-3 control-label"style="font-size:16px;" >所属地区</label>
-									
-										<div class="col-md-9">
+								<div class="panel-body">
+									<form class="form-horizontal " enctype="multipart/form-data"
+										method="post" action="">
+										<div class="form-group">
+											<label class="col-md-3 control-label" style="font-size:16px;"><span
+												class="required">*</span>集体名</label>
+											<div class="col-md-9">
+												<s:textfield name="user.om.omName"
+													value="%{#session.user.om.omName}" cssClass="form-control"></s:textfield>
+											</div>
+											<br> <br>
+										</div>
 
-										<select id="s1"  class="col-md-3" name="omProvince">
-										</select>&nbsp;&nbsp; 
-											<select id="s2" 
-												class="col-md-3" name="omCity">
-											
-  											</select>
-											&nbsp;&nbsp; <span id="seachdistrict_div">
-											 <select
-												id="s3" class="col-md-3" name="omCounty">
-											</select></span>
-											 <br>
-											 <br>
-  										</div>
-  										</div>
-					
-					
-						 <div class="form-group">
-							<label class="col-md-3 control-label" style="font-size:16px;">详细地址</label>
-							<div class="col-md-9">
-									<s:textarea name="user.om.omLocation" value="%{#session.user.om.omLocation}"cssClass="form-control"></s:textarea>
-							</div>
-							<br>
-							<br>
-						</div>
-						                             <div class="form-group">
+										<div class="form-group">
+											<label class="col-md-3 control-label" style="font-size:16px;">集体描述</label>
+											<div class="col-md-9">
+												<s:textarea name="user.om.omDes"
+													value="%{#session.user.om.omDes}" cssClass="form-control"></s:textarea>
+											</div>
+											<br> <br>
+										</div>
 
-									<div class="col-md-9">
-										<button id="save"
-											class="btn btn-primary hidden-xs bk-margin-top-10"
-												type="submit">保存</button>
-											<button
-												class="btn btn-primary btn-block btn-lg visible-xs bk-margin-top-10"
-												type="submit" href="index.html">保存</button>
-									</div>
-									</div>
+										<br> <br>
+										<div class="form-group">
+											<input type="hidden" name="user.userHometown" id="UH" /> <label
+												class="col-md-3 control-label" style="font-size:16px;">所属地区</label>
 
-								</form>
+											<div class="col-md-9">
+
+												<select id="s1" class="col-md-3" name="omProvince">
+												</select>&nbsp;&nbsp; <select id="s2" class="col-md-3" name="omCity">
+
+												</select> &nbsp;&nbsp; <span id="seachdistrict_div"> <select
+													id="s3" class="col-md-3" name="omCounty">
+												</select></span> <br> <br>
+											</div>
+										</div>
+
+
+										<div class="form-group">
+											<label class="col-md-3 control-label" style="font-size:16px;">详细地址</label>
+											<div class="col-md-9">
+												<s:textarea name="user.om.omLocation"
+													value="%{#session.user.om.omLocation}"
+													cssClass="form-control"></s:textarea>
+											</div>
+											<br> <br>
+										</div>
+										<div class="form-group">
+
+											<div class="col-md-9">
+												<button id="save"
+													class="btn btn-primary hidden-xs bk-margin-top-10"
+													type="submit">保存</button>
+												<button
+													class="btn btn-primary btn-block btn-lg visible-xs bk-margin-top-10"
+													type="submit" href="index.html">保存</button>
+											</div>
+										</div>
+
+									</form>
+								</div>
+
 							</div>
 
 						</div>
-		
-					</div>
 					</div>
 				</div>
 			</div>

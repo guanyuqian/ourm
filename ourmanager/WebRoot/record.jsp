@@ -105,9 +105,7 @@ footer {
 
 	}
 	function func2(i) {
-
 		$(i).show();
-
 	}
 </script>
 </head>

@@ -60,7 +60,7 @@
 			<!-- 将返回类型设置为json -->
 			<result name="success">/newrecord.jsp</result>
 		</action>
-		<action name="json1" class="NoticeAction" method="firstLoadNotice">
+		<action name="loadNotice" class="NoticeAction" method="firstLoadNotice">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<!-- 将返回类型设置为json -->
 			<result name="success">/record.jsp</result>
