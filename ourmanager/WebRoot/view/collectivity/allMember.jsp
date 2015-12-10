@@ -67,23 +67,47 @@ footer {
 <title>My JSP starting page</title>
 <link rel="stylesheet" type="text/css" href="assets/css/fenye.css"
 	media="screen" />
-<script src="assets/js/jquery-1.3.2.js"></script>
+<script src="assets/js/jquery-1.7.1.js"></script>
 <script src="assets/js/jquery.paginate.js" type="text/javascript"></script>
-<script type="text/javascript">
-	function func2(userid) {
-		alert(userid);
-		$("#pfp").val(userid);
-		$("#pf").submit();
+<link rel="stylesheet"
+	href="assets/plugins/jquery-ui/css/jquery-ui-1.10.4.min.css">
+<script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>
+<script language="JavaScript">
+	var userList;
+	function func2(i) {
+		console.log(userList[i]);
+		$("#dialog").dialog("open");
+		$("#name").html("昵称：" + userList[i].userName);
+
+		$("#limit").html("权限：" + userList[i].userLimit);
+		$("#id").html("账号：" +userList[i].userid);
+		$("#balance").html("余额：" +userList[i].userBalance);
+		$("#email").html("邮箱：" +userList[i].userEmail);
+		$("#number").html("号码：" +userList[i].userNumber);
+		$("#sex").html("性别：" +userList[i].userSex);
+		$("#moto").html("签名：" +userList[i].userMoto);
+		$("#hometown").html("故乡：" +userList[i].userHometown);
+		$("#location").html("现居：" +userList[i].userLocation);
+		$("#job").html("工作：" +userList[i].userJob);
+		$("#birthday").html("生日：" +userList[i].userBirthday);
+		$("#age").html("年龄：" +userList[i].userAge);
 	}
 	$(document).ready(function() {
 		func(1);
-		$(".test").click(function() {
-			alert("dfasdf");
-			this.submit();
-		});
 	});
 	$(function() {
 		//初始化加载第一页
+		$("#dialog").dialog({
+			autoOpen : false,
+			show : {
+				effect : "blind",
+				duration : 1000
+			},
+			hide : {
+				effect : "explode",
+				duration : 1000
+			}
+		});
 		$("#demo5").paginate({
 			count : ${LAGE_PAGE},
 			start : 1,
@@ -101,9 +125,10 @@ footer {
 		});
 	});
 
-
 	function func(i) {
 		$("#table").empty();
+		var html1 ="<thead style=\"text-align:center\">"+"<tr>"+ "<td>"+ "账户"+ "</td>"+ "<td>"+"昵称"+ "</td>"+ "<td>"+"性别"+ "<td>"+ "邮箱"+ "</td>"+ "<td>"+"电话"+"<td>"+ "余额"+ "</td>"+ "<td>"+"权限"+ "</td> </tr> </thead>";
+		$("#table").append(html1);
 		//提交的参数，name和inch是和struts action中对应的接收变量
 		var params = {
 			page : i
@@ -115,18 +140,14 @@ footer {
 					data : params,
 					dataType : 'json',
 					success : function(data) {
-						console.log(data);
 						var users = data.users;
+						userList = users;
 
 						$
 								.each(
 										users,
 										function(i, item) {
-<<<<<<< HEAD
 											var name = "---";
-=======
-										    var name = "---";
->>>>>>> 1bceaa35b4f05e7c649410f9686c2abed1d70659
 											if (item.userName != null)
 												name = item.userName;
 											var sex = "---";
@@ -146,11 +167,9 @@ footer {
 												limit = "成员";
 											console.log(item.userid + ","
 													+ item.userName);
-<<<<<<< HEAD
-											var html = "<tr  ondblclick=\"func2("+item.userid+")\" onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
-=======
-											var html = "<tr onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
->>>>>>> 1bceaa35b4f05e7c649410f9686c2abed1d70659
+											var html = "<tbody>"+"<tr  ondblclick=\"func2("
+													+ i
+													+ ")\" onmouseover=\"this.style.backgroundColor='#D1EEEE'\" onmouseout=\"this.style.backgroundColor=''\" style=\"\">"
 													+ "<td>"
 													+ item.userid
 													+ "</td>"
@@ -171,7 +190,7 @@ footer {
 													+ "</td>"
 													+ "<td>"
 													+ limit
-													+ "</td> </tr>";
+													+ "</td> </tr></tbody>";
 
 											$("#table").append(html);
 
@@ -182,7 +201,6 @@ footer {
 
 					},
 					error : function(json) {
-						alert("json=" + json);
 						console.log(json);
 						return false;
 					}
@@ -192,6 +210,32 @@ footer {
 </head>
 
 <body>
+	<div id="dialog-confirm" title="Empty the recycle bin?"
+		style="z-index:999">
+		<div id="dialog" title="详细情况" style="text-align:center">
+
+
+
+
+			<label id="name"></label> <br> <label id="limit"></label> <br>  <label
+				id="id"></label>  <br> <label id="balance"></label> <br>  <label id="email"></label>
+
+			 <br> <label id="number"></label>  <br> <label id="sex"></label> <br>  <label id="moto"></label>
+
+			 <br> <label id="hometown"></label> <br>  <label id="location"></label> <br>  <label
+				id="job"></label>  <br> <label id="birthday"></label>  <br> <label id="age"></label>
+
+
+
+
+
+		</div>
+
+
+	</div>
+
+
+
 	<jsp:include page="/view/home.jsp"></jsp:include>
 	<s:form id="pf" action="LookUserDetail" method="post">
 		<div class="main sidebar-minified" style="min-height: 767px;">
@@ -203,82 +247,47 @@ footer {
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="panel"
-						style="width: 870px; padding-left: 100px; border-left-width: 0px; margin-left: 130px; padding-top: 50px;">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">
+					<div class="panel">
 
 
-						<div class="panel-body"
-							style="padding-bottom: 10px; padding-right: 15px; width: 600px; padding-left: 0px; border-left-width: 10px; height: 620px;">
+						<div class="panel-body">
+
 							<div id="paginationdemo" class="demo">
 								<div class="table-responsive">
-									<input type="hidden" id="pfp" name="LookUserid" />
-									<br />
-									<table class="table">
-										<thead>
-											<tr>
-												<th>账号</th>
-												<th>昵称</th>
-												<th>性别</th>
-												<th>邮箱</th>
-												<th>电话</th>
-												<th>余额</th>
-												<th>权限</th>
-											</tr>
-										</thead>
-										<tbody id="table">
-										</tbody>
+									<input type="hidden" id="pfp" name="LookUserid" /> <br />
+									<table class="table"  id="table" style="text-align:center">
+										
+									
 									</table>
 								</div>
-								
-<div class="col-lg-12">
 
-<<<<<<< HEAD
 								<div class="col-lg-12">
 
 									<div class="col-lg-6">
-
-										<div id="demo5"></div>
+       
+										<div id="demo5" style="padding-left: 32px;"></div>
 									</div>
 									<div class="col-lg-6">
-										&nbsp;&nbsp;&nbsp;
-
+									
+                                            
 										<s:textfield id="pj" cssClass="btn btn-default"
 											cssStyle="width:50px;height:30px"></s:textfield>
-
+                                        
 										<button class="btn btn-primary" style="width:60px;height:30px"
 											onclick="func(document.getElementById('pj').value)"
 											type="button">跳转</button>
-											<button type="submit" >sfs</button>
-											
+
+
 									</div>
 								</div>
 							</div>
+
+
+
 						</div>
-
-
-
-=======
-						<div class="col-lg-6">
-						
-						<div id="demo5" ></div>
-						</div>
-						<div class="col-lg-6">
-                                  	&nbsp;&nbsp;&nbsp;
-                   
-											<s:textfield id="pj" cssClass="btn btn-default"
-												cssStyle="width:50px;height:30px"></s:textfield>
-
-											<button class="btn btn-primary" style="width:60px;height:30px"
-												onclick="func(document.getElementById('pj').value)"
-										type="button">跳转</button>
-										</div>
-										</div>
-							</div>
-						</div>
-						
-									
-					
->>>>>>> 1bceaa35b4f05e7c649410f9686c2abed1d70659
+					</div>
 					</div>
 				</div>
 			</div>

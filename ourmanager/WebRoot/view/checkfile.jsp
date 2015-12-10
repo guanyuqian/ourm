@@ -12,7 +12,9 @@
 <html>
 <head>
 
-
+<link rel="stylesheet"
+	href="assets/plugins/jquery-ui/css/jquery-ui-1.10.4.min.css">
+<script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>
 <base href="<%=basePath%>">
 
 <!-- Mobile Metas -->

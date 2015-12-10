@@ -26,7 +26,7 @@
 
 </head>
 <body>
-	<s:form action="LookUserDetail" method="post">
+	<s:form action="json1" method="post">
 		Userid
 		<input id="xm" type="text" name="LookUserid">
 		<button id="save" 

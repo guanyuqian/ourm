@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,7 +15,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.om.dao.IUserDAO;
-
 /**
  * A data access object (DAO) providing persistence and search support for User
  * entities. Transaction control of the save(), update() and delete() operations
@@ -51,6 +49,7 @@ public class UserDAO  implements IUserDAO{
 	public static final String USER_HOME_PROVINCE = "userHomeProvince";
 	public static final String USER_HOME_COUNTY = "userHomeCounty";
 	public static final String USER_HOME_CITY = "userHomeCity";
+	public static final String USER_NUMBER = "userNumber";
 
 	private SessionFactory sessionFactory;
 
@@ -122,10 +121,10 @@ public class UserDAO  implements IUserDAO{
 			String queryString = "from User as model where model."
 					+ propertyName + "= '"+value+"'";
  			Query queryObject = getCurrentSession().createQuery(queryString);		
+			queryObject.setParameter(0, value);
 			return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);
-			re.printStackTrace();
 			throw re;
 		}
 	}
@@ -204,6 +203,10 @@ public class UserDAO  implements IUserDAO{
 
 	public List findByUserHomeCity(Object userHomeCity) {
 		return findByProperty(USER_HOME_CITY, userHomeCity);
+	}
+
+	public List findByUserNumber(Object userNumber) {
+		return findByProperty(USER_NUMBER, userNumber);
 	}
 
 	public List findAll() {

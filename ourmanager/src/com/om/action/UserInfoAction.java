@@ -141,15 +141,27 @@ public class UserInfoAction extends ActionSupport {
 	//	System.out.println("in loadmembers");
 		for (User u : list) {
 			Map us=new HashMap();
+		
+			us.put("userBalance", u.getUserBalance());
 			us.put("userid", u.getUserid());
 			us.put("userName", u.getUserName());
 			us.put("userSex", u.getUserSex());
 			us.put("userEmail", u.getUserEmail());
 			us.put("userLimit", u.getUserLimit());
-			//us.put("userNum", u.userNum());
+			
+			us.put("userMoto", u.getUserMoto());
+			us.put("userJob", u.getUserJob());
+			us.put("userBirthday", u.getUserBirthday());
+			
+			us.put("userProvince", u.getUserProvince());
+			us.put("userCounty", u.getUserCounty());
+			us.put("userCity", u.getUserCity());
+			us.put("userHomeProvince", u.getUserHomeProvince());
+			us.put("userHomeCounty", u.getUserHomeCounty());
+			us.put("userHomeCity", u.getUserHomeCity());
+			us.put("userNumber", u.getUserNumber());
 			Users.add(us);
 		}
-		System.out.println("PAGE_LAST:"+list );
 		return SUCCESS;
 	}
 

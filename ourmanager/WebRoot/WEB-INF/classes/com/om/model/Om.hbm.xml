@@ -49,6 +49,18 @@
                 <comment>人数</comment>
             </column>
         </property>
+        <set name="notices" inverse="true">
+            <key>
+                <column name="omid" not-null="true" />
+            </key>
+            <one-to-many class="com.om.model.Notice" />
+        </set>
+        <set name="newses" inverse="true">
+            <key>
+                <column name="omid" not-null="true" />
+            </key>
+            <one-to-many class="com.om.model.News" />
+        </set>
         <set name="users" inverse="true">
             <key>
                 <column name="omid" not-null="true" />

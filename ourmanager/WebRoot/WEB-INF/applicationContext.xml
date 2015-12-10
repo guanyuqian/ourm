@@ -32,6 +32,9 @@
 				<value>com/om/model/Bill.hbm.xml</value>
 				<value>com/om/model/Purchase.hbm.xml</value>
 				<value>com/om/model/Om.hbm.xml</value>
+				<value>com/om/model/News.hbm.xml</value>
+				<value>com/om/model/UserNoticeCollect.hbm.xml</value>
+				<value>com/om/model/Notice.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -97,12 +100,34 @@
 	<bean id="PurchaseAction" class="com.om.action.PurchaseAction">
 		<property name="purchaseService" ref="PurcahseService"></property>
 	</bean>
- 	<bean id="BillCreateService" class="com.om.service.impl.BillService">
-	<property name="billdao" ref="BillDAO"></property>
-	<property name="purchasedao" ref="PurchaseDAO"></property>
-	<property name="userdao" ref="UserDAO"></property>
+	<bean id="BillCreateService" class="com.om.service.impl.BillService">
+		<property name="billdao" ref="BillDAO"></property>
+		<property name="purchasedao" ref="PurchaseDAO"></property>
+		<property name="userdao" ref="UserDAO"></property>
 	</bean>
 	<bean id="BillCreateAction" class="com.om.action.BillAction">
-	<property name="billservice" ref="BillCreateService"></property>
-	</bean> 
+		<property name="billservice" ref="BillCreateService"></property>
+	</bean>
+	<bean id="NewsDAO" class="com.om.model.NewsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserNoticeCollectDAO" class="com.om.model.UserNoticeCollectDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="NoticeDAO" class="com.om.model.NoticeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="noticeService" class="com.om.service.impl.NoticeService">
+		<property name="noticeDao" ref="NoticeDAO"></property>
+		<property name="userDAO" ref="UserDAO"></property>
+	</bean>
+	<bean id="NoticeAction" class="com.om.action.NoticeAction">
+		<property name="noticeService" ref="noticeService"></property>
+	</bean>
 </beans>

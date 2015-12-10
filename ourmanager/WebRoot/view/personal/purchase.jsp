@@ -109,92 +109,149 @@ footer {
 <script src="assets/js/jquery-1.7.1.js"></script>
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.inputmask.js" type="text/javascript"></script>
-<script type="text/javascript">
-	$(document).ready(function() {	
-        	$("#money").hide();
-		$("#balance").click(function() {
-$("#money").show();
 
+<link rel="stylesheet"
+	href="assets/plugins/jquery-ui/css/jquery-ui-1.10.4.min.css">
+<script src="assets/plugins/jquery-ui/js/jquery-ui-1.10.4.min.js"></script>
+<link rel="stylesheet" href="jqueryui/style.css">
+
+<script type="text/javascript">
+	$(function() {
+		//初始化加载第一页
+		$("#dialog").dialog({
+			autoOpen : false,
+			show : {
+				effect : "blind",
+				duration : 1000
+			},
+			hide : {
+				effect : "explode",
+				duration : 1000
+			}
+		});
 	});
-		
+	$(document).ready(function() {
+
+		$("#balance").click(function() {
+			$("#dialog").dialog("open");
+
+		});
+
 	});
 </script>
 <style>
-.div-relative{position:relative;margin:0 auto;}   
-.div-a{ position:absolute;z-index:999;  left: 0; top: 0; right: 0; bottom: 0;
-    margin: auto;  width:476px;top:80px;  height:280px;border-style:solid; border-width:5px;  border-top-color:#34495e}  
-
 </style>
 
-  </head>
-  
-  <body>
+</head>
 
-      <jsp:include page="/view/home.jsp"></jsp:include>
-      <s:form id="form" action="Update" method="post">
-      <div class="main sidebar-minified" style="min-height: 767px;">
-      <div class="page-header">
+<body>
+	<div id="dialog-confirm" title="Empty the recycle bin?"
+		style="z-index:999">
+		<div id="dialog" title="充值框" style="text-align:center">
 
-<div class="pull-right" >
-<h2>个人消费记录</h2>
-</div>
-</div>
-<div class="div-relative"  style="margin:0 auto;">
- <div id="money"class="div-a" style="text-align:center" style="margin:0 auto;"><jsp:include  page="Recharge.jsp"></jsp:include></div>
+			<div class="panel">
+				<div class="panel-title-register text-right"></div>
+				<form method="post" action="">
+					<div class="form-group">
+						<label for="money"><strong>金额</strong></label> <input
+							id="billMoney" class="form-control" type="text"
+							placeholder="填写充值金额" name="money"> <span
+							class="help-block">每笔最高20万</span>
+					</div>
+					<div class="form-group">
+						<label for="remark"><strong>备注</strong></label> <input id="remark"
+							class="form-control" type="text" placeholder="有什么什么想和管理员说的呀"
+							name="remark"> <span class="help-block">20字以内</span>
+					</div>
+					<table class="table" id="recharge">
 
-      <div class="row">
-      <div class="col-lg-12">
-      
-      
-      <div class="panel" >
-     
+						<tr>
+							<td><span class="help-block"></span></td>
+							<td><span class="help-block"></span></td>
+							<td><span class="help-block"></span></td>
+							<td><span class="help-block"></span></td>
+							<td><button class="btn btn-primary" type="button">
+									<i class="fa fa-lightbulb-o"></i> 确认充值
+								</button></td>
 
-       
-       <div class="table-responsive" >
-       <table class="table" id="usermoney">
-       <thead>
-       <tr>
-<th>账单名</th>
-<th>消费/充值</th>
-<th>金额</th>
-<th>日期</th>
-</tr>
-</thead>
-<s:iterator value="purchaseList" id="pur">
-       <tbody>
-       <tr>
-
-<td>${bill.billName}</td>
-
-<td>${purchaseType} </td>
-<td>${purchaseMoney}</td>
-<td>${purchaseCreatetime} </td>
+						</tr>
+					</table>
 
 
-</tr>
+				</form>
 
-</tbody>
-</s:iterator >
-        </table>
-        <table class="table"  id="userbalance">
-  
-  <tr>
-    <td><strong>个人余额</strong></td>
-    <td><s:property  value="%{#session.user.userBalance}"/> </td>
-    <td> <button class="btn btn-primary" type="button" id="balance">
-      <i class="fa fa-lightbulb-o"></i>
-                                      充值
-       </button></td>
-  </tr>
-</table>
-</div>
-</div>
-</div>
-      </div>
-      </div>
-      </div>
-  
-      </s:form>
-   
-  </body>
+			</div>
+
+		</div>
+	</div>
+	<jsp:include page="/view/home.jsp"></jsp:include>
+	<s:form id="form" action="Update" method="post">
+		<div class="main sidebar-minified" style="min-height: 767px;">
+			<div class="page-header">
+
+				<div class="pull-right">
+					<h2>个人消费记录</h2>
+				</div>
+			</div>
+			<div class="div-relative" style="margin:0 auto;">
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="col-md-1"></div>
+						<div class="col-md-10">
+
+							<div class="panel">
+
+
+
+								<div class="table-responsive">
+									<table class="table" id="usermoney" style="text-align:center">
+										<thead>
+											<tr>
+												<th>账单名</th>
+												<th>消费/充值</th>
+												<th>金额</th>
+												<th>日期</th>
+											</tr>
+										</thead>
+										<s:iterator value="purchaseList" id="pur">
+											<tbody>
+												<tr>
+
+													<td>${bill.billName}</td>
+
+													<td>${purchaseType}</td>
+													<td>${purchaseMoney}</td>
+													<td>${purchaseCreatetime}</td>
+
+
+												</tr>
+
+											</tbody>
+										</s:iterator>
+									</table>
+									<table class="table" id="userbalance">
+
+										<tr>
+											<td><strong>个人余额</strong></td>
+											<td><s:property value="%{#session.user.userBalance}" />
+											</td>
+											<td>
+												<button class="btn btn-primary" type="button" id="balance">
+													<i class="fa fa-lightbulb-o"></i> 充值
+												</button>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</s:form>
+
+</body>
 </html>

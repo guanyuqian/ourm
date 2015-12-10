@@ -34,9 +34,7 @@
 			<result name="success">view/profile.jsp</result>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
-		<action name="test" class="OmServiceAction" method="test">
-			<result name="success" type="json"></result>
-		</action>
+
 		<action name="menberlistAction" class="UserInfoUpdateAction"
 			method="loadMembers">
 			<result name="success" type="json"></result>
@@ -47,19 +45,30 @@
 		<action name="loadPurchase" class="PurchaseAction" method="loadPur">
 			<result name="success">view/personal/purchase.jsp</result>
 		</action>
-		<action name="LookUserDetail" class="UserInfoUpdateAction" method="LoadUserDetail">
+		<action name="LookUserDetail" class="UserInfoUpdateAction"
+			method="LoadUserDetail">
 			<result name="success">view/personal/UserDetail.jsp</result>
 		</action>
 		<action name="updateOM" class="OmUpdateAction" method="updateOM">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
- 		<action name="createBill" class="BillCreateAction" method="createBill">
+		<action name="createBill" class="BillCreateAction" method="createBill">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action> 
-		<action name="jsonAjax" class="com.zxt.JsonAction">
+		</action>
+		<action name="test" class="NoticeAction" method="addNotice">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<!-- 将返回类型设置为json -->
-			<result type="json"></result>
+			<result name="success">/newrecord.jsp</result>
+		</action>
+		<action name="json1" class="NoticeAction" method="firstLoadNotice">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- 将返回类型设置为json -->
+			<result name="success">/record.jsp</result>
+		</action>
+		<action name="loadList" class="NoticeAction" method="loadlNotice">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<!-- 将返回类型设置为json -->
+			<result name="success" type="json"></result>
 		</action>
 	</package>
 </struts>    

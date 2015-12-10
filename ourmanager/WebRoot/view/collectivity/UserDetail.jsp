@@ -116,7 +116,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:15px;">权限</label>
 											<div class="col-md-6">
-												<s:property value="LookUser.userName" />
+												<s:property value="LookUser.userLimit" />
 
 											</div>
 										</div>
@@ -125,7 +125,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:15px;">账户</label>
 											<div class="col-md-6">
-												<s:property value="LookUser.userName" />
+												<s:property value="LookUser.userid" />
 												<br>
 											</div>
 										</div>
@@ -134,7 +134,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:15px;">账户余额</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userBalance}" />
+												<s:property value="LookUser.userBalance" />
 												<br>
 											</div>
 										</div>
@@ -143,7 +143,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:15px;">邮箱</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userEmail}" />
+												<s:property value="LookUser.userEmail" />
 
 											</div>
 										</div>
@@ -152,7 +152,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:15px;">手机号</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userNumber}" />
+												<s:property value="LookUser.userNumber" />
 												<br>
 											</div>
 										</div>
@@ -161,7 +161,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:15px;">性别</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userSex}" />
+												<s:property value="LookUser.userSex" />
 
 											</div>
 										</div>
@@ -170,7 +170,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:16px;">签名档</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userMoto}" />
+												<s:property value="LookUser.userMoto" />
 
 											</div>
 										</div>
@@ -179,7 +179,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:16px;">故乡</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userHometown}" />
+												<s:property value="LookUser.userHometown" />
 
 
 											</div>
@@ -189,7 +189,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:16px;">现居地</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userLocation}" />
+												<s:property value="LookUser.userLocation" />
 
 
 											</div>
@@ -199,7 +199,7 @@ footer {
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:16px;">工作</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userJob}" />
+												<s:property value="LookUser.userJob" />
 
 											</div>
 										</div>
@@ -208,14 +208,16 @@ footer {
 										<hr />
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:16px;">生日</label>
-											<div class="col-md-6"></div>
+											<div class="col-md-6">
+											<s:property value="LookUser.userBirthday" />
+											</div>
 										</div>
 										<br>
 										<hr />
 										<div class="form-group">
 											<label class="col-md-4 control-label" style="font-size:16px;">年龄</label>
 											<div class="col-md-6">
-												<s:property value="%{#session.user.userAge}" />
+												<s:property value="LookUser.userAge" />
 
 											</div>
 										</div>

@@ -1,6 +1,12 @@
 package com.om.action;
 import java.util.Map;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.om.model.Om;
@@ -99,4 +105,5 @@ public class OmAction  extends ActionSupport {
 			return ERROR;
 		}
 	}
+
 }

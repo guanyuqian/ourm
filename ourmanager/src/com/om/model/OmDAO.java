@@ -3,7 +3,6 @@ package com.om.model;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
-
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,7 +14,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.om.dao.IOmDAO;
-
 /**
  * A data access object (DAO) providing persistence and search support for Om
  * entities. Transaction control of the save(), update() and delete() operations

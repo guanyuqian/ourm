@@ -8,6 +8,7 @@
     <class name="com.om.model.User" table="user" catalog="omdatabase">
         <id name="userid" type="java.lang.Integer">
             <column name="userid" />
+            <generator class="identity" />
         </id>
         <many-to-one lazy="false" name="om" class="com.om.model.Om" fetch="select">
             <column name="omid" not-null="true" />
@@ -77,11 +78,38 @@
         <property name="userHomeCity" type="java.lang.String">
             <column name="user_home_city" length="20" />
         </property>
+        <property name="userNumber" type="java.lang.Integer">
+            <column name="user_number" />
+        </property>
+        <set name="newsesForNewsRecieveUser" inverse="true">
+            <key>
+                <column name="news_recieve_user" not-null="true">
+                    <comment>消息接受方</comment>
+                </column>
+            </key>
+            <one-to-many class="com.om.model.News" />
+        </set>
         <set name="billsForCheckerUserid" inverse="true">
             <key>
                 <column name="checker_userid" not-null="true" />
             </key>
             <one-to-many class="com.om.model.Bill" />
+        </set>
+        <set name="userNoticeCollects" inverse="true">
+            <key>
+                <column name="userid" not-null="true">
+                    <comment>收藏者</comment>
+                </column>
+            </key>
+            <one-to-many class="com.om.model.UserNoticeCollect" />
+        </set>
+        <set name="noticesForNoticeCreater" inverse="true">
+            <key>
+                <column name="notice_creater" not-null="true">
+                    <comment>公告发布者</comment>
+                </column>
+            </key>
+            <one-to-many  class="com.om.model.Notice" />
         </set>
         <set name="purchases" inverse="true">
             <key>
@@ -100,6 +128,22 @@
                 <column name="creater_userid" not-null="true" />
             </key>
             <one-to-many class="com.om.model.Bill" />
+        </set>
+        <set name="noticesForNoticeEditor" inverse="true">
+            <key>
+                <column name="notice_editor">
+                    <comment>公告最后一次修改的人</comment>
+                </column>
+            </key>
+            <one-to-many class="com.om.model.Notice" />
+        </set>
+        <set name="newsesForNewsSendUser" inverse="true">
+            <key>
+                <column name="news_send_user" not-null="true">
+                    <comment>消息发送方</comment>
+                </column>
+            </key>
+            <one-to-many class="com.om.model.News" />
         </set>
     </class>
 </hibernate-mapping>

@@ -37,10 +37,16 @@ public class User implements java.io.Serializable {
 	private String userHomeProvince;
 	private String userHomeCounty;
 	private String userHomeCity;
+	private Integer userNumber;
+	private Set newsesForNewsRecieveUser = new HashSet(0);
 	private Set billsForCheckerUserid = new HashSet(0);
+	private Set userNoticeCollects = new HashSet(0);
+	private Set noticesForNoticeCreater = new HashSet(0);
 	private Set purchases = new HashSet(0);
 	private Set logs = new HashSet(0);
 	private Set billsForCreaterUserid = new HashSet(0);
+	private Set noticesForNoticeEditor = new HashSet(0);
+	private Set newsesForNewsSendUser = new HashSet(0);
 
 	// Constructors
 
@@ -67,8 +73,11 @@ public class User implements java.io.Serializable {
 			Short userAge, Boolean deleteflag, Timestamp userCreatetime,
 			String userProvince, String userCounty, String userCity,
 			String userHomeProvince, String userHomeCounty,
-			String userHomeCity, Set billsForCheckerUserid, Set purchases,
-			Set logs, Set billsForCreaterUserid) {
+			String userHomeCity, Integer userNumber,
+			Set newsesForNewsRecieveUser, Set billsForCheckerUserid,
+			Set userNoticeCollects, Set noticesForNoticeCreater, Set purchases,
+			Set logs, Set billsForCreaterUserid, Set noticesForNoticeEditor,
+			Set newsesForNewsSendUser) {
 		this.om = om;
 		this.userName = userName;
 		this.userPassword = userPassword;
@@ -91,10 +100,16 @@ public class User implements java.io.Serializable {
 		this.userHomeProvince = userHomeProvince;
 		this.userHomeCounty = userHomeCounty;
 		this.userHomeCity = userHomeCity;
+		this.userNumber = userNumber;
+		this.newsesForNewsRecieveUser = newsesForNewsRecieveUser;
 		this.billsForCheckerUserid = billsForCheckerUserid;
+		this.userNoticeCollects = userNoticeCollects;
+		this.noticesForNoticeCreater = noticesForNoticeCreater;
 		this.purchases = purchases;
 		this.logs = logs;
 		this.billsForCreaterUserid = billsForCreaterUserid;
+		this.noticesForNoticeEditor = noticesForNoticeEditor;
+		this.newsesForNewsSendUser = newsesForNewsSendUser;
 	}
 
 	// Property accessors
@@ -283,12 +298,44 @@ public class User implements java.io.Serializable {
 		this.userHomeCity = userHomeCity;
 	}
 
+	public Integer getUserNumber() {
+		return this.userNumber;
+	}
+
+	public void setUserNumber(Integer userNumber) {
+		this.userNumber = userNumber;
+	}
+
+	public Set getNewsesForNewsRecieveUser() {
+		return this.newsesForNewsRecieveUser;
+	}
+
+	public void setNewsesForNewsRecieveUser(Set newsesForNewsRecieveUser) {
+		this.newsesForNewsRecieveUser = newsesForNewsRecieveUser;
+	}
+
 	public Set getBillsForCheckerUserid() {
 		return this.billsForCheckerUserid;
 	}
 
 	public void setBillsForCheckerUserid(Set billsForCheckerUserid) {
 		this.billsForCheckerUserid = billsForCheckerUserid;
+	}
+
+	public Set getUserNoticeCollects() {
+		return this.userNoticeCollects;
+	}
+
+	public void setUserNoticeCollects(Set userNoticeCollects) {
+		this.userNoticeCollects = userNoticeCollects;
+	}
+
+	public Set getNoticesForNoticeCreater() {
+		return this.noticesForNoticeCreater;
+	}
+
+	public void setNoticesForNoticeCreater(Set noticesForNoticeCreater) {
+		this.noticesForNoticeCreater = noticesForNoticeCreater;
 	}
 
 	public Set getPurchases() {
@@ -317,6 +364,22 @@ public class User implements java.io.Serializable {
 
 	public void setBillsForCreaterUserid(Set billsForCreaterUserid) {
 		this.billsForCreaterUserid = billsForCreaterUserid;
+	}
+
+	public Set getNoticesForNoticeEditor() {
+		return this.noticesForNoticeEditor;
+	}
+
+	public void setNoticesForNoticeEditor(Set noticesForNoticeEditor) {
+		this.noticesForNoticeEditor = noticesForNoticeEditor;
+	}
+
+	public Set getNewsesForNewsSendUser() {
+		return this.newsesForNewsSendUser;
+	}
+
+	public void setNewsesForNewsSendUser(Set newsesForNewsSendUser) {
+		this.newsesForNewsSendUser = newsesForNewsSendUser;
 	}
 
 }

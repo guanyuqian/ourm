@@ -24,6 +24,8 @@ public class Om implements java.io.Serializable {
 	private Integer omMoney;
 	private String omBank;
 	private Integer headcount;
+	private Set notices = new HashSet(0);
+	private Set newses = new HashSet(0);
 	private Set users = new HashSet(0);
 	private Set logs = new HashSet(0);
 	private Set purchases = new HashSet(0);
@@ -46,7 +48,8 @@ public class Om implements java.io.Serializable {
 	public Om(String omName, String omDes, String omLogoUrl, String omCity,
 			String omCounty, String omProvince, String omLocation,
 			Timestamp omCreatetime, Integer omMoney, String omBank,
-			Integer headcount, Set users, Set logs, Set purchases, Set bills) {
+			Integer headcount, Set notices, Set newses, Set users, Set logs,
+			Set purchases, Set bills) {
 		this.omName = omName;
 		this.omDes = omDes;
 		this.omLogoUrl = omLogoUrl;
@@ -58,6 +61,8 @@ public class Om implements java.io.Serializable {
 		this.omMoney = omMoney;
 		this.omBank = omBank;
 		this.headcount = headcount;
+		this.notices = notices;
+		this.newses = newses;
 		this.users = users;
 		this.logs = logs;
 		this.purchases = purchases;
@@ -78,6 +83,8 @@ public class Om implements java.io.Serializable {
 		this.omMoney =om. omMoney;
 		this.omBank =om. omBank;
 		this.headcount = om.headcount;
+	this.notices = om.notices;
+		this.newses = om.newses;
 		this.users = om.users;
 		this.logs = om.logs;
 		this.purchases =om. purchases;
@@ -178,6 +185,22 @@ public class Om implements java.io.Serializable {
 
 	public void setHeadcount(Integer headcount) {
 		this.headcount = headcount;
+	}
+
+	public Set getNotices() {
+		return this.notices;
+	}
+
+	public void setNotices(Set notices) {
+		this.notices = notices;
+	}
+
+	public Set getNewses() {
+		return this.newses;
+	}
+
+	public void setNewses(Set newses) {
+		this.newses = newses;
 	}
 
 	public Set getUsers() {
