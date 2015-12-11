@@ -27,6 +27,43 @@ public class NoticeAction extends ActionSupport {
 	private int page;
 	public List Notices = new ArrayList();
 	private int LAGE_PAGE;
+	String newNoticeName;
+	String newNoticeDes;
+	String newNoticePriority;
+
+	public String getNewNoticeDes() {
+		return newNoticeDes;
+	}
+
+	public void setNewNoticeDes(String newNoticeDes) {
+		this.newNoticeDes = newNoticeDes;
+	}
+
+	public String getNewNoticePriority() {
+		return newNoticePriority;
+	}
+
+	public void setNewNoticePriority(String newNoticePriority) {
+		this.newNoticePriority = newNoticePriority;
+	}
+
+	private Date endTime;
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public String getNewNoticeName() {
+		return newNoticeName;
+	}
+
+	public void setNewNoticeName(String newNoticeName) {
+		this.newNoticeName = newNoticeName;
+	}
 
 	public Notice getNotice() {
 		return notice;
@@ -122,8 +159,14 @@ public class NoticeAction extends ActionSupport {
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		User nowuser = ((User) session.getAttribute("user"));
 		Om nowom = ((Om) session.getAttribute("om"));
-		Notice newNotice = new Notice(nowuser, nowom, "NoticeName", new Date(),
-				null, "高");
+		if(newNoticePriority==null){
+			newNoticePriority="低";
+		}if(endTime==null){
+			endTime=new Date();
+		}
+		Notice newNotice = new Notice(nowuser, nowom, newNoticeName, endTime,
+				null, newNoticePriority);
+		newNotice.setNoticeDes(newNoticeDes);
 		if (noticeService.addNotice(nowuser, newNotice))
 			return SUCCESS;
 		return ERROR;

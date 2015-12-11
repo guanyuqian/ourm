@@ -44,7 +44,7 @@
             </column>
         </property>
         <property name="noticePriority" type="java.lang.String">
-            <column name="notice_priority" length="5" not-null="true">
+            <column name="notice_priority" length="5">
                 <comment>公告优先级：低，中，高</comment>
             </column>
         </property>

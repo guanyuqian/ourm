@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
 import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -196,5 +197,13 @@ public class NoticeDAO implements INoticeDAO{
 		}catch (Exception e){
 			return null; 
 		}
+	}
+
+	public List findByCreater(Integer userid) {
+		try{
+			return findByProperty("userByNoticeCreater.userid",userid);
+			}catch (Exception e){
+				return null; 
+			}
 	}
 }
