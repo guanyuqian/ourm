@@ -53,9 +53,9 @@ public class NoticeAction extends ActionSupport {
 	}
 
 	public String firstLoadNotice() throws IOException {
-		page = 1;
+		// page = 1;
 		getLAGE_PAGE();
-		loadlNotice();
+		// loadlNotice();
 		return SUCCESS;
 	}
 
@@ -70,23 +70,28 @@ public class NoticeAction extends ActionSupport {
 
 		Notices.clear();
 		// System.out.println("PAGE_LAST:" + getLAGE_PAGE());
-		try{
-		for (Notice u : list) {
-			Map us = new HashMap();
-			us.put("Noticeid", u.getNoticeid());
-			us.put("NoticeName", u.getNoticeName());
-			us.put("NoticePriority", u.getNoticePriority());
-			us.put("NoticeDes", u.getNoticeDes());
-			us.put("NoticeEndtime", u.getNoticeEndtime());
-			us.put("Editor", u.getUserByNoticeEditor());
-			us.put("Creater", u.getUserByNoticeCreater());
-			Notices.add(us);
-		}
-		}catch (Exception e){
+		try {
+			for (Notice u : list) {
+				Map us = new HashMap();
+				us.put("Noticeid", u.getNoticeid());
+				us.put("NoticeName", u.getNoticeName());
+				us.put("NoticePriority", u.getNoticePriority());
+				us.put("NoticeDes", u.getNoticeDes());
+				us.put("NoticeEndtime", u.getNoticeEndtime());
+				us.put("Editorid", "");
+				us.put("EditorName", "");
+				if (u.getUserByNoticeEditor() != null) {
+					us.put("Editorid", u.getUserByNoticeEditor().getUserid());
+					us.put("EditorName", u.getUserByNoticeEditor()
+							.getUserName());
+				}
+				us.put("Createrid", u.getUserByNoticeCreater().getUserid());
+				us.put("CreaterName", u.getUserByNoticeCreater().getUserName());
+				Notices.add(us);
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 			return SUCCESS;
-	
-
 
 		}
 		return SUCCESS;
@@ -117,8 +122,8 @@ public class NoticeAction extends ActionSupport {
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		User nowuser = ((User) session.getAttribute("user"));
 		Om nowom = ((Om) session.getAttribute("om"));
-		Notice newNotice = new Notice(nowuser, nowom, "NoticeName",
-				new Date(), null, "高");
+		Notice newNotice = new Notice(nowuser, nowom, "NoticeName", new Date(),
+				null, "高");
 		if (noticeService.addNotice(nowuser, newNotice))
 			return SUCCESS;
 		return ERROR;
